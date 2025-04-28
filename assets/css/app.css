@@ -1,0 +1,17 @@
+body {
+  display: flex;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+form {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=app.css.map */
