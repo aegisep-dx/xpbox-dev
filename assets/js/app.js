@@ -34,7 +34,7 @@ function onSubmit(event) {
   }
 
   console.log(data);
-
+  // 주석 제거하면 바로 사용 가능
   // axios.post('https://lxxofjjdpxrprtapiwww.supabase.co/functions/v1/createissue', data).then(console.log);
 }
 
