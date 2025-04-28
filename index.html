@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
-  <link rel="stylesheet" href="assets/css/example.css" />
+  <link rel="stylesheet" href="/assets/css/app.css" />
   <script src="/assets/js/axios.min.js"></script>
-  <script src="assets/js/example.js" defer></script>
+  <script src="/assets/js/app.js"></script>
 </head>
 <body>
 <img src="assets/img/img.png" alt="" onclick="callCreateIssueHello()">
+<!-- TODO: FORM 작업 - 엘리먼트 네임, 아이디만 맞추면 동작합니다 -->
+<form onsubmit="onSubmit(event)">
+  <input type="text" name="company" id="company" placeholder="회사/단지명"/>
+  <input type="email" name="email" id="email" placeholder="이메일"/>
+  <input type="tel" name="phone" id="phone" placeholder="전화번호"/>
+  <textarea name="content" id="content" placeholder="문의내용"></textarea>
+  <button type="submit">전송</button>
+</form>
 </body>
 </html>
