@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
-  <link rel="stylesheet" href="./assets/css/app.css" />
+  <link rel="stylesheet" href="./assets/css/app.css?v1" />
 </head>
 <body>
   <header>
@@ -16,16 +16,16 @@
           <a class="">Xp문서함</a>
         </li>
         <li>
-          <a class="">활용 예시</a>
+          <a class="" href="#use-cases">활용 예시</a>
         </li>
         <li>
-          <a class="">설치 안내</a>
+          <a class="" href="#installation">설치 안내</a>
         </li>
         <li>
-          <a class="">FAQ</a>
+          <a class="" href="#faq">FAQ</a>
         </li>
         <li>
-          <a class="">문의 / 제휴 접수</a>
+          <a class=""  href="#contact">문의 / 제휴 접수</a>
         </li>
       </ul>
     </nav>
@@ -34,6 +34,7 @@
     </button>
   </header>
   <main> 
+
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
       <ul>
         <li><button type="button">매뉴얼 1</button></li>
@@ -41,6 +42,7 @@
         <li><button type="button">TOP</button></li>
       </ul>
     </aside>
+
     <article  id="intro" class="main-visual active" aria-label="메인 비주얼">
       <section>
         <h1>
@@ -48,7 +50,6 @@
           <img src="./assets/img/visual_img.svg" alt="">
           Xp문서함 
         </h1>
-        
         <p>
           문서 관리, 이제 어렵게 하지 마세요!<br>
           Xp문서함은 언제 어디서나 아파트 관리사무소 문서 편집이 가능합니다.
@@ -59,16 +60,16 @@
         </button>
       </section>
     </article>
+
     <article id="introSub" aria-label="메인 서브 비주얼">
       <section>
         <h2>
-          국내 최대<br>
-          관리소 통합 문서 관리 서비스
+          공동 주택을 위한<br>
+          스마트한 문서 공간
         </h2>
       
         <p>
-          Xp문서함은 언제 어디서나<br>
-          아파트 관리사무소 전체 문서 관리가 가능합니다.
+          안전하고 효율적인 문서 관리, Xp문서함에 맡기세요
         </p>
         <i class="visual-icon main-icon" data-delay="0.1s" data-icon="pdf">
           <img src="./assets/img/file/visual-pdf.svg" alt="pdf 아이콘">
@@ -107,23 +108,200 @@
     </article>
 
     <article id="features" aria-label="XP문서함 장점">
-      <!-- 장점 내용 -->
+      <section>
+        <div class="sub-title">
+          <h2>
+            장점
+          </h2>
+          <span>이런 점이 좋아요.</span>
+        </div>
+        <div class="section-contents features">
+          <div class="section-card features">
+            <i class="icon">
+              <img src="./assets/img/easy-setup.svg" alt="간편한 설치, 쉬운 사용 아이콘">
+            </i>
+            <h3>간편한 설치, 쉬운 사용</h3>
+            <p>
+              설치 한 번으로<br>
+              윈도우 탐색기와 연동되어<br>
+              바로 사용 가능합니다.
+            </p>
+          </div>
+          <div class="section-card features">
+            <i class="icon">
+              <img src="./assets/img/access-icon.svg" alt="어디서든 가능한 접속 아이콘">
+            </i>
+            <h3>어디서든 가능한 접속</h3>
+            <p>
+              언제 어디서든<br>
+              동일한 환경에서 접속하여<br>
+              업무 처리가 가능합니다.
+            </p>
+          </div>
+          <div class="section-card features">
+            <i class="icon">
+              <img src="./assets/img/safe-file.svg" alt="안전한 파일 관리 아이콘">
+            </i>
+            <h3>안전한 파일 관리</h3>
+            <p>
+              문서 암호화 및 이력보관으로<br>
+              안전한 파일 관리를 보장합니다.
+            </p>
+          </div>
+        </div>
+      </section>
     </article>
 
     <article id="use-cases" aria-label="XP문서함 활용 예시">
-      <!-- 활용 예시 내용 -->
+      <section>
+        <div class="sub-title">
+          <h2>
+            활용예시
+          </h2>
+          <span>이런 점이 좋아요.</span>
+        </div>
+        <div class="section-contents use-cases" >
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-01.png" alt="개인 보관함과 단지 문서함">
+            </div>
+            <h3>개인 보관함과 단지 문서함</h3>
+            <p>
+              나만의 개인 보관함에서 문서를 관리하고,<br>
+              전체 공유 문서는 단지 문서함에서 관리하여 협업할 수 있습니다.
+            </p>
+          </div>
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-02.png" alt="드래그 앤 드롭으로 한 번에 이동">
+            </div>
+            <h3>드래그 앤 드롭으로 한 번에 이동</h3>
+            <p>
+              바탕화면에서 파일을 드래그 앤 드롭 (끌어서 놓기)하면,<br>
+              문서함으로 바로 이동됩니다.
+            </p>
+          </div>
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-03.png" alt="문서 수신함">
+            </div>
+            <h3>문서 수신함</h3>
+            <p>
+              놓치기 쉬운 공문을 챙겨드려요.<br>
+              각종 대외 문서를 한 곳에서 받아 볼 수 있습니다.
+            </p>
+          </div>
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-04.png" alt="보안 문서 (단지 문서함)">
+            </div>
+            <h3>보안 문서 (단지 문서함)</h3>
+            <p>
+              중요 문서 관리가 어렵나요?<br>
+              자동 암호화와 보안 문서 관리로 중요 문서를 안전하게 보관합니다.
+            </p>
+          </div>
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-05.png" alt="자료실">
+            </div>
+            <h3>자료실</h3>
+            <p>
+              아파트 관리사무소 업무에 필요한<br>
+              중요한 서식과 양식이 모아져 있습니다.
+            </p>
+          </div>
+          <div class="section-card use-cases">
+            <div class="thum-img">
+              <img src="./assets/img/usage-example-06.png" alt="폴더 바로가기">
+            </div>
+            <h3>폴더 바로가기</h3>
+            <p>
+              자주 사용하는 폴더는 바로가기 설정으로<br>
+              빠르게 접근하여 업무 시간을 단축합니다.
+            </p>
+          </div>
+        </div>
+      </section>
     </article>
 
     <article id="installation" aria-label="XP문서함 설치 안내">
-      <!-- 설치 안내 내용 -->
+      <section>
+        <div class="sub-title">
+          <h2>
+            설치안내
+          </h2>
+          <span>첫 이용 고객은 프로그램 설치가 필요합니다.<br>
+          (XpERP 회원만 이용 가능)</span>
+        </div>
+        <ol class="section-contents installation">
+          <li class="section-card installation">
+            <strong class="step-num">1</strong>
+            <h3>Xp문서함 설치 버튼 선택</h3>
+            <div class="thum-img">
+              <img src="./assets/img/xpdoc-install-01.png" alt="Xp문서함 설치 버튼 선택">
+            </div>
+          </li>
+          <li class="section-card installation">
+            <strong class="step-num">2</strong>
+            <h3>Xp문서함 설치 버튼 선택</h3>
+            <div class="thum-img">
+              <img src="./assets/img/xpdoc-install-02.png" alt="Xp문서함 설치 버튼 선택 이미지">
+            </div>
+          </li>
+          <li class="section-card installation">
+            <strong class="step-num">3</strong>
+            <h3>바탕화면에서 Xp문서함 선택</h3>
+            <div class="thum-img">
+              <img src="./assets/img/xpdoc-install-03.png" alt="바탕화면에서 Xp문서함 선택 이미지">
+            </div>
+          </li>
+          <li class="section-card installation">
+            <strong class="step-num">4</strong>
+            <h3>로그인 후, 탐색기에서 Xp문서함 사용</h3>
+            <div class="thum-img">
+              <img src="./assets/img/xpdoc-install-04.png" alt="로그인 후, 탐색기에서 Xp문서함 사용 이미지">
+            </div>
+          </li>
+        </ol>
+      </section>
     </article>
 
     <article id="faq" aria-label="XP문서함 FAQ">
-      <!-- FAQ 내용 -->
+      <section>
+        <div class="sub-title">
+          <h2>
+            설치안내
+          </h2>
+          <span>첫 이용 고객은 프로그램 설치가 필요합니다.<br>
+            (XpERP 회원만 이용 가능)</span>
+        </div>
+        <div class="section-contents features">
+          <div class="section-card features ">
+            <i class=""></i>
+          </div>
+        </div>
+      </section>
     </article>
 
     <article id="contact" aria-label="문의 및 제휴 접수">
-      <!-- 폼이나 연락처 내용 -->
+      <!-- TODO: FORM 작업 - 엘리먼트 네임, 아이디만 맞추면 동작합니다 -->
+      <section>
+        <div class="sub-title">
+          <h2>
+            설치안내
+          </h2>
+          <span>이런 점이 좋아요.</span>
+        </div>
+        <form onsubmit="onSubmit(event)" class="section-contents">
+          <input type="text" name="company" id="company" placeholder="회사/단지명" />
+          <input type="email" name="email" id="email" placeholder="이메일" />
+          <input type="tel" name="phone" id="phone" placeholder="전화번호" />
+          <textarea name="content" id="content" placeholder="문의내용"></textarea>
+          <button type="submit">전송</button>
+        </form>
+      </section>
+      
     </article>
   </main>
   <footer>
@@ -131,14 +309,7 @@
   </footer>
 <img src="assets/img/img.png" alt="" onclick="callCreateIssueHello()">
 
-<!-- TODO: FORM 작업 - 엘리먼트 네임, 아이디만 맞추면 동작합니다 -->
-<form onsubmit="onSubmit(event)">
-  <input type="text" name="company" id="company" placeholder="회사/단지명"/>
-  <input type="email" name="email" id="email" placeholder="이메일"/>
-  <input type="tel" name="phone" id="phone" placeholder="전화번호"/>
-  <textarea name="content" id="content" placeholder="문의내용"></textarea>
-  <button type="submit">전송</button>
-</form>
+
 </body>
   <script src="./assets/js/axios.min.js"></script>
   <script src="./assets/js/app.js"></script>
