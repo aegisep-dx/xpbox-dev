@@ -271,7 +271,11 @@ a {
 
 
 body {
-  display: flex;
+  display: block;
+  min-width: 1280px;
+  @media screen and (max-width: 1280px) {
+    overflow-x: auto;
+  }
 }
 
 img {
@@ -286,3 +290,44 @@ form {
   flex-direction: column;
 }
 
+
+header {
+  height: 72px;
+  width: 100%; display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0 40px;
+  .logo-link {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    background: url('./assets/img/logo.svg') no-repeat center;
+  }
+  nav {
+    display: flex; margin-left: auto;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      li {
+        a {
+          font-size: 18px; 
+          font-weight: 500;
+          color: #000;
+        }
+      }
+    }
+  }
+  > button {
+    width: 151px;
+    margin-left: 48px;
+    height: 46px;
+    border: 1px solid #d6d6d8;
+    border-radius: 60px;
+    color: #000;
+    font-size: 15px; 
+    font-weight: 600;
+    word-spacing: -0.02em;
+    cursor: pointer;
+  }
+}

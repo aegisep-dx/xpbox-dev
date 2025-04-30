@@ -147,11 +147,10 @@ body {
   background: #fafafa;
 }
 
-h1 {
+h1, h2 {
   font-weight: 700;
 }
 
-h2,
 h3,
 h4,
 h5,
@@ -271,12 +270,11 @@ a {
 
 
 body {
-  display: flex;
-}
-
-img {
-  width: 300px;
-  height: 300px;
+  display: block;
+  min-width: 1280px;
+  @media screen and (max-width: 1280px) {
+    overflow-x: auto;
+  }
 }
 
 form {
@@ -286,3 +284,239 @@ form {
   flex-direction: column;
 }
 
+
+header {
+  height: 72px;
+  width: 100%; display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  .logo-link {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    background: url("../img/logo.svg") no-repeat center;
+    cursor: pointer;
+  }
+  nav {
+    display: flex; margin-left: auto;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      li {
+        a {
+          font-size: 18px; 
+          font-weight: 500;
+          color: #000;
+        }
+      }
+    }
+  }
+  > button {
+    width: 151px;
+    margin-left: 48px;
+    height: 46px;
+    border: 1px solid #d6d6d8;
+    border-radius: 60px;
+    color: #000;
+    font-size: 15px; 
+    font-weight: 600;
+    word-spacing: -0.02em;
+    cursor: pointer;
+  }
+  &.active {
+    position: fixed; z-index: 2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+}
+
+
+main {position: relative; z-index: 0;}
+
+/* article 숨김 + 모션용 기본값 */
+article section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+
+section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+aside {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 600px;
+  background: #fff; 
+  &:nth-child(even) {
+    background: #F9F9F9;
+  }
+  &:nth-child(3) {
+    background: #fff;
+    height: 800px;
+  }
+  &#introSub {
+    &.active {
+      
+    }
+    section {
+      height: 418px;
+      display: flex; 
+      flex-direction: column;
+      padding-top: 100px;
+      position: relative;
+      width: 0;
+      overflow: hidden;
+      transition: all .5s;
+      transform: scale(0);
+      &.active {
+        width: 100%;
+        max-width: 1517px;
+        overflow: inherit;
+        transform: scale(1);
+      }
+      h2 {
+        font-size: 44px;
+        text-align: center;
+        line-height: 120%;
+        color: #000;
+      }
+      p {
+        margin-top: 28px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 160%;
+        word-spacing: -0.01em;
+        color: #272932;
+        text-align: center;
+        display: inline-block;
+      }
+      .visual-icon {
+        transition: all;
+        animation: float 3s ease-in-out infinite; /* 3초 간격으로 무한 반복 */
+        animation-play-state: running; /* 애니메이션이 중지되지 않도록 설정 */
+        animation-delay: var(--delay, 0s);
+        position: absolute;
+        &.main-icon {
+          filter:drop-shadow(8px 16px 20px rgba(71,82,92,0.13))
+        }
+        &[data-icon="pdf"] {
+          left: 290px;
+          top: 60px; 
+        }
+        &[data-icon="ppt"] {
+          right: 245px;
+          top: 161px;
+        }
+        &[data-icon="word"] {
+          left: 356px;
+          bottom: 60px;
+        }
+        &[data-icon="excel"] {
+          right: 410px;
+          bottom: 0; 
+        }
+        &[data-icon="doc"] {
+          left: 72px;
+          top: 0; 
+        }
+        &[data-icon="write"] {
+          left: 0;
+          bottom: 116px; 
+        }
+        &[data-icon="folder"] {
+          left: 237px;
+          top: 191px;
+        }
+        &[data-icon="img"] {
+          right: 384px;
+          top: 37px; 
+        }
+        &[data-icon="file"] {
+          right: 95px;
+          top: 91px;
+        }
+        &[data-icon="box"] {
+          right: 180px;
+          bottom: 75px;
+        }
+        &[data-icon="cloud"] {
+          right: 0;
+          bottom: 161px;
+        }
+      }    
+      
+    }
+  }
+}
+
+.main-visual {
+  display: block;
+  min-height: calc(100vh - 72px);
+  padding: 98px 0;
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    h1 {
+     font-size: 84px; font-weight: 700;
+     color: #000;
+     line-height: 100%; 
+     word-spacing: -0.03em;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 160%;
+      word-spacing: -0.01em;
+      color: #272932;
+      text-align: center;
+    }
+    > button {
+      background: #27282C;
+      color: #fff;
+      border-radius: 48px;
+      padding: 20px 30px; 
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 20px;
+      word-spacing: -0.01em;
+      .icon {
+        display :block;
+        width: 24px;
+        height: 24px; 
+        background: url("../img/down_ico.svg") no-repeat center;
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translateY(-10px); /* 위로 떠오름 */
+  }
+  100% {
+    transform: translateY(0); /* 다시 원래 위치로 */
+  }
+}

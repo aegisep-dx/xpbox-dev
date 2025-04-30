@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
-  <link rel="stylesheet" href="/assets/css/app.css" />
-  <script src="/assets/js/axios.min.js"></script>
-  <script src="/assets/js/app.js"></script>
+  <link rel="stylesheet" href="./assets/css/app.css" />
 </head>
 <body>
   <header>
@@ -43,22 +41,69 @@
         <li><button type="button">TOP</button></li>
       </ul>
     </aside>
-    <article class="main-visual" aria-label="메인 비주얼">
+    <article  id="intro" class="main-visual active" aria-label="메인 비주얼">
       <section>
         <h1>
           관리의 시작,  
-          <img src="./assets/img/" alt="">
+          <img src="./assets/img/visual_img.svg" alt="">
           Xp문서함 
         </h1>
         
-        <p>문서 관리, 이제 어렵게 하지 마세요!
+        <p>
+          문서 관리, 이제 어렵게 하지 마세요!<br>
           Xp문서함은 언제 어디서나 아파트 관리사무소 문서 편집이 가능합니다.
         </p>
-        <button>Xp문서함 사용하기</button>
+        <button>
+          <i class="icon down"></i>
+          Xp문서함 사용하기
+        </button>
       </section>
     </article>
-    <article id="intro" aria-label="메인 서브 비주얼">
-    <!-- 메인 비주얼 콘텐츠 -->
+    <article id="introSub" aria-label="메인 서브 비주얼">
+      <section>
+        <h2>
+          국내 최대<br>
+          관리소 통합 문서 관리 서비스
+        </h2>
+      
+        <p>
+          Xp문서함은 언제 어디서나<br>
+          아파트 관리사무소 전체 문서 관리가 가능합니다.
+        </p>
+        <i class="visual-icon main-icon" data-delay="0.1s" data-icon="pdf">
+          <img src="./assets/img/file/visual-pdf.svg" alt="pdf 아이콘">
+        </i>
+        <i class="visual-icon main-icon" data-delay="0.2s" data-icon="excel">
+          <img src="./assets/img/file/visual-excel.svg" alt="excel 아이콘">
+        </i>
+        <i class="visual-icon main-icon" data-delay="0.3s" data-icon="word">
+          <img src="./assets/img/file/visual-word.svg" alt="word 아이콘">
+        </i>
+        <i class="visual-icon main-icon" data-delay="0.4s" data-icon="ppt">
+          <img src="./assets/img/file/visual-ppt.svg" alt="ppt 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="0.5s" data-icon="file">
+          <img src="./assets/img/file/visual-file.svg" alt="파일 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="0.6s" data-icon="box">
+          <img src="./assets/img/file/visual-box.svg" alt="박스 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="0.7s" data-icon="cloud">
+          <img src="./assets/img/file/visual-cloud.svg" alt="클라우드 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="0.8s" data-icon="doc">
+          <img src="./assets/img/file/visual-doc.svg" alt="doc  아이콘">
+        </i>
+        <i class="visual-icon" data-delay="0.9s" data-icon="folder">
+          <img src="./assets/img/file/visual-folder.svg" alt="폴더 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="1.0s" data-icon="write">
+          <img src="./assets/img/file/visual-write.svg" alt="쓰기 아이콘">
+        </i>
+        <i class="visual-icon" data-delay="1.1s" data-icon="img">
+          <img src="./assets/img/file/visual-img.svg" alt="이미지 아이콘">
+        </i>
+      </section>
     </article>
 
     <article id="features" aria-label="XP문서함 장점">
@@ -95,4 +140,6 @@
   <button type="submit">전송</button>
 </form>
 </body>
+  <script src="./assets/js/axios.min.js"></script>
+  <script src="./assets/js/app.js"></script>
 </html>

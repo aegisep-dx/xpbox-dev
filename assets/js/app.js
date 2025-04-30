@@ -43,3 +43,45 @@ window.addEventListener('DOMContentLoaded', async ()=> {
   // functions
 });
 
+const icons = document.querySelectorAll('.visual-icon');
+
+icons.forEach((el, idx) => {
+  el.style.setProperty('--delay', `${idx * 0.1}s`);
+  el.classList.add('active'); // 애니메이션 트리거됨
+});
+
+// 스크롤 시 header에 클래스 부여
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    header.classList.add('active');
+  } else {
+    header.classList.remove('active');
+  }
+});
+
+// article 활성화 (intro 제외, introSub는 포함)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    } else {
+      // entry.target.classList.remove('active'); // 필요 없으면 삭제 가능
+    }
+  });
+}, {
+  threshold: 0.2 // 20% 보일 때 작동
+});
+
+// #intro만 제외하고, 나머지 article에 observe 설정 (introSub 포함)
+document.querySelectorAll('article:not(#intro) section').forEach(section => {
+  observer.observe(section);
+});
+
+// #intro는 로딩 시 바로 active 클래스 붙이기
+document.addEventListener('DOMContentLoaded', () => {
+  const intro = document.querySelector('#intro');
+  const section = intro ? intro.querySelector('section') : null; // article 안의 section을 찾아서
+  if (section) section.classList.add('active'); // section에 active 클래스 추가
+});
+
