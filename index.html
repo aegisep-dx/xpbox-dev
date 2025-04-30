@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
-  <link rel="stylesheet" href="./assets/css/app.css?v1" />
+  <link rel="stylesheet" href="./assets/css/app.min.css?v1" />
 </head>
 <body>
   <header>
@@ -37,8 +37,16 @@
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
       <ul>
-        <li><button type="button">매뉴얼 1</button></li>
-        <li><button type="button">매뉴얼 2</button></li>
+        <li>
+          <button type="button">
+            사용 안내
+          </button>
+        </li>
+        <li>
+          <button type="button">
+            소개 자료
+          </button>
+        </li>
         <li><button type="button">TOP</button></li>
       </ul>
     </aside>
@@ -264,6 +272,35 @@
             </div>
           </li>
         </ol>
+        <div class="installation-error-info">
+          <div class="installation-drop-btn">
+            <button aria-expanded="false">
+              <i><img src="./assets/img/setup-icon.svg" alt="설치 오류 아이콘"></i>
+              <h3>설치 오류 해결하기</h3>
+            </button>
+          </div>
+          <ul class="installation-list">
+            <li>
+              <h3>
+                <em>다운로드가 안 된다면</em> <strong>이렇게 해결해 보세요.</strong>
+              </h3>
+              <p>
+                크롬(인터넷 창)에서 설정 > 개인 정보 보호 및 보안 클릭하기 > 보안 > ‘보호되지 않음’을 선택해 주세요.<br>
+                설정 후 다시 다운로드를 실행해 주세요.
+              </p>
+            </li>
+            <li>
+              <h3>
+                <em>프로그램 설치가 안 된다면 </em> <strong>이렇게 해결해 보세요.</strong>
+              </h3>
+              <p>
+                Xp문서함을 다시 다운로드하세요.<br>
+                설치 파일을 우클릭 > 속성 > 차단 해제를 클릭하고 확인을 누른 뒤, 설치 파일을 다시 우클릭 > ‘관리자 권한으로 실행’을 클릭하여 설치해 보세요.<br>
+                문제가 반복된다면 고객센터(02-6281-7336)에 문의해 주세요.
+              </p>
+            </li>
+          </ul>
+        </div>
       </section>
     </article>
 
@@ -271,15 +308,72 @@
       <section>
         <div class="sub-title">
           <h2>
-            설치안내
+            FAQ
           </h2>
-          <span>첫 이용 고객은 프로그램 설치가 필요합니다.<br>
-            (XpERP 회원만 이용 가능)</span>
+          <span>자주 묻는 질문</span>
         </div>
-        <div class="section-contents features">
-          <div class="section-card features ">
-            <i class=""></i>
-          </div>
+        <div class="section-contents">
+          <ul class="faq-list faq">
+            <li class="faq-list-item">
+              <button type="button" class="faq-question-btn" aria-expanded="false">
+                <strong>Q.</strong>
+                <h3>어떻게 접속하나요?</h3>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  최초 1회 설치가 필요합니다.<br>
+                  설치 후 컴퓨터 바탕화면에서 ‘Xp문서함’을 클릭하시면 로그인 후 사용 가능합니다.
+                </p>
+              </div>
+            </li>
+            <li class="faq-list-item">
+              <button type="button" class="faq-question-btn" aria-expanded="false">
+                <strong>Q.</strong>
+                <h3>회원 가입은 어떻게 하나요?</h3>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  XpERP에 가입한 회원이라면 별도의 회원가입 없이 이용할 수 있습니다.<br>
+                  (로그인 창에서 XpERP 아이디와 비밀번호를 입력해 주세요.)
+                </p>
+              </div>
+            </li>
+            <li class="faq-list-item">
+              <button type="button" class="faq-question-btn" aria-expanded="false">
+                <strong>Q.</strong>
+                <h3>무료로 사용할 수 있나요?</h3>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  XpERP 사용 단지라면 무료로 사용 가능합니다.
+                </p>
+              </div>
+            </li>
+            <li class="faq-list-item">
+              <button type="button" class="faq-question-btn" aria-expanded="false">
+                <strong>Q.</strong>
+                <h3>컴퓨터 포맷을 하면 문서함에 보관한 파일도 사라지나요?</h3>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  컴퓨터 포맷 또는 PC 교체 후에도 Xp문서함에 로그인하면 기존 사용하던 폴더와 문서를 그대로 사용할 수 있어요.
+                </p>
+              </div>
+            </li>
+            <li class="faq-list-item">
+              <button type="button" class="faq-question-btn" aria-expanded="false">
+                <strong>Q.</strong>
+                <h3>Xp문서함을 왜 써야 하나요?</h3>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  아파트 관리소 업무 중 개인정보를 포함한 자료를 취급할 때는 ‘개인정보보호법’을 준수해야 합니다.<br>
+                  법령 준수 및 안전한 파일 관리를 위해 Xp문서함 사용이 필요해요.<br>
+                  <button class="text-link">자세히 보기</button>
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
     </article>
@@ -289,25 +383,70 @@
       <section>
         <div class="sub-title">
           <h2>
-            설치안내
+            문의 / 제휴 접수
           </h2>
-          <span>이런 점이 좋아요.</span>
+          <span>해당 폼을 작성해 문의 주시면 빠르게 답변 드리겠습니다.</span>
         </div>
-        <form onsubmit="onSubmit(event)" class="section-contents">
-          <input type="text" name="company" id="company" placeholder="회사/단지명" />
-          <input type="email" name="email" id="email" placeholder="이메일" />
-          <input type="tel" name="phone" id="phone" placeholder="전화번호" />
-          <textarea name="content" id="content" placeholder="문의내용"></textarea>
-          <button type="submit">전송</button>
+        <form onsubmit="onSubmit(event)" class="section-contents form">
+          <div class="form-input">
+            <label class="required" for="phocompanyne">아파트 단지명 / 단지코드 또는 회사명</label>
+            <input type="text" name="company" id="company" placeholder="이지스아파트 89999 또는 이지스주식회사" />
+          </div>
+          <div class="form-input">
+            <label class="required" for="email">이메일</label>
+            <input type="email" name="email" id="email" placeholder="이메일" />
+          </div>
+          <div class="form-input">
+            <label class="required" for="phone">전화번호</label>
+            <input type="tel" name="phone" id="phone" class="error" placeholder="전화번호" value="0202020" />
+          </div>
+          <div class="form-input">
+            <label class="required" for="content">문의 내용</label>
+            <textarea name="content" id="content" placeholder="문의내용"></textarea>
+            <span class="text-count">0/500</span>
+          </div>
+          <div class="check-btn">
+            <input type="checkbox" id="checkDate">
+            <label for="checkDate">
+              <span></span>
+              <em>필수</em>
+              <strong>개인(신용)정보 수집·이용</strong>에 동의합니다. 상담 외 다른 목적으로 사용되지 않습니다.
+            </label>
+          </div>
+          <button type="submit" class="contact-submit">전송</button>
         </form>
       </section>
       
     </article>
   </main>
   <footer>
-
+    <section class="foot-box">
+      <div class="foot-logo" aria-label="이지스로고"></div>
+      <div class="foot-info">
+        <p>
+          <strong>이지스엔터프라이즈㈜</strong><br>
+          대표 : 최병인 | 사업자등록번호 : 120-86-14122<br>
+          [08506] 서울시 금천구 가산디지털2로 98 IT캐슬 2동 714호<br>
+          <strong>고객센터 : 02-6281-7336</strong> (09:00 - 17:00 주말 및 공휴일 제외) / dxsupport@aegisep.com<br>
+        </p>
+        <p>
+          ⓒ Aegis enterprise. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+      <div class="foot-button">
+        <!-- TODO
+            1:1 원격지원 링크
+            xphub다운로드 링크
+         -->
+        <button class="remote-btn">1:1 원격지원</button> 
+        <button class="xphub-down-btn">
+          <i><img src="./assets/img/xphub-icon.svg" alt="xphub아이콘"></i>
+          XpHUB 다운로드
+        </button>
+      </div>
+    </section>
   </footer>
-<img src="assets/img/img.png" alt="" onclick="callCreateIssueHello()">
+<!-- <img src="assets/img/img.png" alt="" onclick="callCreateIssueHello()"> -->
 
 
 </body>

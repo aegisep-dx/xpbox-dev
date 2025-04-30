@@ -61,27 +61,79 @@ window.addEventListener('scroll', () => {
 });
 
 // article 활성화 (intro 제외, introSub는 포함)
-const observer = new IntersectionObserver((entries) => {
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add('active');
+//     } else {
+//       // entry.target.classList.remove('active'); // 필요 없으면 삭제 가능
+//     }
+//   });
+// }, {
+//   threshold: 0.2 // 20% 보일 때 작동
+// });
+
+const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
-    } else {
-      // entry.target.classList.remove('active'); // 필요 없으면 삭제 가능
+      observer.unobserve(entry.target); // 한 번만 작동하게
     }
   });
 }, {
-  threshold: 0.2 // 20% 보일 때 작동
+  threshold: 0.2
 });
+
+document.querySelectorAll('article:not(#intro) section').forEach(section => {
+  const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+  const currentScroll = window.scrollY + window.innerHeight;
+
+  if (currentScroll > sectionTop + (section.offsetHeight * 0.2)) {
+    // 이미 화면에 충분히 노출된 상태면 바로 active
+    section.classList.add('active');
+  } else {
+    // 아직 노출 안됐으면 observer로 감시
+    observer.observe(section);
+  }
+});
+
 
 // #intro만 제외하고, 나머지 article에 observe 설정 (introSub 포함)
 document.querySelectorAll('article:not(#intro) section').forEach(section => {
   observer.observe(section);
 });
 
-// #intro는 로딩 시 바로 active 클래스 붙이기
-document.addEventListener('DOMContentLoaded', () => {
-  const intro = document.querySelector('#intro');
-  const section = intro ? intro.querySelector('section') : null; // article 안의 section을 찾아서
-  if (section) section.classList.add('active'); // section에 active 클래스 추가
+
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.querySelector('.installation-drop-btn button');
+  const list = document.querySelector('.installation-list');
+
+  // 처음에는 펼쳐져 있도록 설정
+  button.setAttribute('aria-expanded', 'true');
+  list.classList.add('active');  // 'active' 클래스 추가하여 펼쳐놓기
+
+  // 클릭 시 토글 처리
+  button.addEventListener('click', function () {
+    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+    // 토글 상태 변경
+    this.setAttribute('aria-expanded', !isExpanded);
+    list.classList.toggle('active', !isExpanded);
+  });
 });
+
+
+document.querySelectorAll('.faq-question-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
+
+    // 부모 li.section-card.faq에 .active 토글
+    const faqItem = button.closest('.faq-list-item');
+    if (faqItem) {
+      faqItem.classList.toggle('active', !expanded);
+    }
+  });
+});
+
 
