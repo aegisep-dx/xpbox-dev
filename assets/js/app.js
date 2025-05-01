@@ -52,8 +52,13 @@ icons.forEach((el, idx) => {
 
 // 스크롤 시 header에 클래스 부여
 const header = document.querySelector('header');
+const mainVisual = document.querySelector('.main-visual');
+
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
+  const visualHeight = mainVisual.offsetHeight;
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > visualHeight) {
     header.classList.add('active');
   } else {
     header.classList.remove('active');
@@ -71,18 +76,33 @@ const observer = new IntersectionObserver((entries, observer) => {
   threshold: 0.1
 });
 
+// document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
+//   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+//   const currentScroll = window.scrollY + window.innerHeight;
+
+//   if (currentScroll > sectionTop + (section.offsetHeight * 0.1)) {
+//     // 이미 화면에 충분히 노출된 상태면 바로 active
+//     section.classList.add('active');
+//   } else {
+//     // 아직 노출 안됐으면 observer로 감시
+//     observer.observe(section);
+//   }
+// });
+
 document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
-  const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+  const rect = section.getBoundingClientRect();
+  const sectionTop = rect.top + window.scrollY;
+  const sectionBottom = rect.bottom + window.scrollY;
   const currentScroll = window.scrollY + window.innerHeight;
 
-  if (currentScroll > sectionTop + (section.offsetHeight * 0.1)) {
-    // 이미 화면에 충분히 노출된 상태면 바로 active
+  // 현재 뷰포트보다 아래에 있는 경우만 observe
+  if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
     section.classList.add('active');
   } else {
-    // 아직 노출 안됐으면 observer로 감시
     observer.observe(section);
   }
 });
+
 
 
 // #intro만 제외하고, 나머지 article에 observe 설정 (introSub 포함)
