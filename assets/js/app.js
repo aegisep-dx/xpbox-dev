@@ -60,19 +60,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// article 활성화 (intro 제외, introSub는 포함)
-// const observer = new IntersectionObserver((entries) => {
-//   entries.forEach(entry => {
-//     if (entry.isIntersecting) {
-//       entry.target.classList.add('active');
-//     } else {
-//       // entry.target.classList.remove('active'); // 필요 없으면 삭제 가능
-//     }
-//   });
-// }, {
-//   threshold: 0.2 // 20% 보일 때 작동
-// });
-
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -81,14 +68,14 @@ const observer = new IntersectionObserver((entries, observer) => {
     }
   });
 }, {
-  threshold: 0.2
+  threshold: 0.1
 });
 
-document.querySelectorAll('article:not(#intro) section').forEach(section => {
+document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
   const currentScroll = window.scrollY + window.innerHeight;
 
-  if (currentScroll > sectionTop + (section.offsetHeight * 0.2)) {
+  if (currentScroll > sectionTop + (section.offsetHeight * 0.1)) {
     // 이미 화면에 충분히 노출된 상태면 바로 active
     section.classList.add('active');
   } else {
@@ -99,7 +86,7 @@ document.querySelectorAll('article:not(#intro) section').forEach(section => {
 
 
 // #intro만 제외하고, 나머지 article에 observe 설정 (introSub 포함)
-document.querySelectorAll('article:not(#intro) section').forEach(section => {
+document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
   observer.observe(section);
 });
 

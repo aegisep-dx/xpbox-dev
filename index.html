@@ -4,8 +4,84 @@
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
   <link rel="stylesheet" href="./assets/css/app.min.css?v2" />
+<style>
+  .toast-message {
+    background: #fff;
+    position: fixed;
+    bottom: 80px;
+    border-radius: 12px;
+    box-shadow: 4px 5px 24px 0 rgba(0, 0, 0, 0.1);
+    padding: 22px 22px 22px 20px;
+    color: #4A4E60;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 100%;
+    z-index: 15;
+  }
+</style>
 </head>
+
 <body>
+  <div class="toast-message">
+    <i>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="10" fill="#06BC76" />
+        <path d="M6.69922 9.82183L9.37779 12.5996L14.1992 7.59961" stroke="white" stroke-width="1.75"
+          stroke-linecap="square" stroke-linejoin="round" />
+      </svg>
+    </i>
+    접수가 완료되었습니다. 담당자가 이메일로 곧 연락드리겠습니다.
+  </div>
+  <div class="modal-dim">
+    <div class="modal-pop">
+      <div class="modal-header">
+        <h2>개인정보처리방침</h2>
+        <button class="close-btn" aria-label="닫기버튼"></button>
+      </div>
+      <div class="modal-contents">
+        <p>
+          이지스엔터프라이즈는 아래 법령에 따라 XpERP 및 부가 서비스에서 다운로드한<br>
+          직원과 입주민의 개인 정보가 포함된 파일을 Xp문서함에 자동 보관합니다.<br>
+          Xp문서함은 악성 프로그램을 방지하고 이력을 안전하게 관리합니다.<br><br>
+
+          제30조(개인정보의 안전성 확보 조치)<br>
+          ① 개인정보처리자는 법 제29조에 따라 다음 각 호의 안전성 확보 조치를 해야 한다.<br>
+          5. 개인정보 침해 사고 발생에 대응하기 위한 접속기록의 보관 및 위조 · 변조 방지를 위한 다음 각 목의 조치<br>
+          <span class="gray-color">
+            가. 개인정보처리시스템에 접속한 자의 접속 일시, 처리 내역 등 접속기록의<br>
+            저장 · 점검 및 이의 확인 · 감독<br>
+            나. 개인정보처리시스템에 대한 접속기록의 안전한 보관<br>
+            다. 그 밖에 접속기록 보관 및 위조ㆍ변조 방지를 위하여 필요한 조치<br>
+          </span>
+          6. 개인정보처리시스템 및 개인정보 취급자가 개인정보 처리에 이용하는 정보기기에 대해 컴퓨터바이러스, 스파이웨어, 랜섬웨어 등 악성 프로그램의 침투 여부를 항시 점검ㆍ치료할 수 있도록 하는 등의
+          기능이 포함된 프로그램의 설치ㆍ운영과 주기적 갱신ㆍ점검 조치
+        </p>
+      </div>
+    </div>
+
+    <div class="modal-pop">
+      <div class="modal-header">
+        <h2>개인(신용)정보 수집·이용</h2>
+        <button class="close-btn" aria-label="닫기버튼"></button>
+      </div>
+      <div class="modal-contents">
+        <p>
+          1. 수집 목적 : 문의 처리 및 회신<br>
+          2. 수집 항목 : 회사명 또는 아파트 단지명, 이메일 주소, 전화번호, 문의 내용<br>
+          3. 보유기간 : 문의 안내 종료 시
+        </p>
+        <span class="gray-color">
+          ※ 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있으나, 동의 거부 시 상담 서비스 이용에
+          제한이 있을 수 있습니다.
+        </span>
+      </div>
+    </div>
+  </div>
   <header>
     <a class="logo-link">
 
@@ -33,6 +109,11 @@
       Xp문서함 사용하기
     </button>
   </header>
+
+  <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="맨위로">
+    <i><img src="./assets/img/top_ico.svg" alt="위로 아이콘" /></i>
+  </button>
+
   <main> 
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
@@ -48,11 +129,10 @@
         </i>
         소개 자료
       </button>
-      <button type="button">TOP</button>
     </aside>
     
 
-    <article  id="intro" class="main-visual active" aria-label="메인 비주얼">
+    <article  id="intro" class="main-visual" aria-label="메인 비주얼">
       <section>
         <h1>
           관리의 시작,  
@@ -71,7 +151,7 @@
     </article>
 
     <article id="introSub" aria-label="메인 서브 비주얼">
-      <section>
+      <section class="upslide">
         <h2>
           공동 주택을 위한<br>
           스마트한 문서 공간
@@ -117,7 +197,7 @@
     </article>
 
     <article id="features" aria-label="XP문서함 장점">
-      <section>
+      <section class="upslide">
         <div class="sub-title">
           <h2>
             장점
@@ -162,7 +242,7 @@
     </article>
 
     <article id="use-cases" aria-label="XP문서함 활용 예시">
-      <section>
+      <section class="upslide">
         <div class="sub-title">
           <h2>
             활용예시
@@ -235,7 +315,7 @@
     </article>
 
     <article id="installation" aria-label="XP문서함 설치 안내">
-      <section>
+      <section class="upslide">
         <div class="sub-title">
           <h2>
             설치안내
