@@ -381,7 +381,7 @@ article {
       position: relative;
       width: 0;
       overflow: hidden;
-      transition: all 1s;
+      transition: transform 1.5s ease;
       transform: scale(0);
       justify-content: flex-start;
       &.active {
@@ -389,14 +389,29 @@ article {
         max-width: 1517px;
         overflow: inherit;
         transform: scale(1);
+        .visual-icon {
+          opacity: 1;
+        }
+        h2 {
+          transition-delay: 0.5s; opacity: 1; transform: translateY(0); 
+        }
+        p {
+          transition-delay: 1s; opacity: 1; transform: translateY(0); 
+        }
       }
       h2 {
         font-size: 44px;
         text-align: center;
         line-height: 120%;
         color: #000;
+        transform: translateY(40px);
+        transition: opacity 0.2s ease, transform 0.6s ease;
+        opacity: 0;
       }
       p {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.2s ease, transform 0.6s ease;
         margin-top: 28px;
         font-size: 20px;
         font-weight: 500;
@@ -407,7 +422,8 @@ article {
         display: inline-block;
       }
       .visual-icon {
-        transition: all;
+        opacity: 0;
+        transition: opacity 0.5s ease;
         animation: float 3s ease-in-out infinite; /* 3초 간격으로 무한 반복 */
         animation-play-state: running; /* 애니메이션이 중지되지 않도록 설정 */
         animation-delay: var(--delay, 0s);
@@ -828,6 +844,8 @@ section {
      color: #000;
      line-height: 100%; 
      word-spacing: -0.03em;
+     display: flex;
+     align-items: center;
     }
     p {
       font-size: 20px;
@@ -854,34 +872,55 @@ section {
         background: url("../img/down_ico.svg") no-repeat center;
       }
     }
+    .visual-img-motion {
+      width: 604px;
+      height: 400px;
+      position: relative;
+      div {
+        display: inline-flex;
+        position: absolute;
+        &[aria-index="1"] {
+          left: 12px;
+          top: 27px;
+          animation: visual-01 3s ease-in-out infinite;
+        }
+        &[aria-index="2"] {
+          left: 181px;
+          top: 95px;
+          animation: visual-02 3s ease-in-out infinite;
+        }
+        &[aria-index="3"] {
+          right: 19px;
+          top: 34px;
+          animation: visual-03 3s ease-in-out infinite;
+        }
+        &[aria-index="4"] {
+          left: 137px;
+          bottom: 10px;
+        }
+        &[aria-index="5"] {
+          position: absolute;
+          right: 0;
+          top: 25px;
+          overflow: hidden;
+          #wifi-01, #wifi-02 {
+            opacity: 0;
+            transform: scale(0.8);
+            transform-origin: center;
+            animation: blink 3s steps(1, start) infinite;
+          }
+          #wifi-01 {
+            animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
+          }
+
+          
+        }
+      }
+      
+    }
   }
 }
 
-
-
-@keyframes float {
-  0% {
-    transform: translateY(0); /* 시작 위치 */
-  }
-  50% {
-    transform: translateY(-20px); /* 위로 떠오름 */
-  }
-  100% {
-    transform: translateY(0); /* 다시 원래 위치로 */
-  }
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(0); /* 시작 위치 */
-  }
-  50% {
-    transform: scale(0); /* 위로 떠오름 */
-  }
-  100% {
-    transform: scale(1); /* 다시 원래 위치로 */
-  }
-}
 
 input {
   height: 52px; border-radius: 8px;
@@ -979,17 +1018,6 @@ textarea {
     img {
       flex-shrink: 0;
     }
-  }
-}
-
-
-
-@keyframes scrollLoop {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
   }
 }
 
@@ -1093,8 +1121,8 @@ footer {
   z-index: 11;
   right: 40px;
   &:hover {
-    background: #1A1A1A;
-  }
+    background-color: #fcfcfc;
+  }  
   @media (min-width: 1921px) {
     right: 200px; /* 우측 200px로 위치 */
     transform: translateX(-200px) translateY(-50%); /* translateX로 배너를 살짝 왼쪽으로 이동 */
@@ -1175,5 +1203,83 @@ footer {
       line-height: 150%;
       font-size: 14px;
     }
+  }
+}
+
+
+@keyframes visual-01 {
+  0%, 20%, 90%, 100% {
+    transform: translate(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translate(-5px, -5px); /* 위로 떠오름 */
+  }
+  70% {
+    transform: translate(-5px, -5px) rotate(-5deg); /* 위로 떠오름 */
+  }
+}
+
+@keyframes visual-02 {
+  0%, 20%, 90%, 100% {
+    transform: translateY(0) scale(1); /* 시작 위치 */
+  }
+  50% {
+    transform: translateY(-10px) scale(1.025); /* 위로 떠오름 */
+  }
+  70% {
+    transform: translateY(-10px) scale(1.025); /* 위로 떠오름 */
+  }
+}
+
+
+@keyframes visual-03 {
+  0%, 20%, 90%, 100% {
+    transform: translate(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translate(5px, 5px) rotate(3deg); /* 위로 떠오름 */
+  }
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 0;
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translateY(-10px); /* 위로 떠오름 */
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0); /* 시작 위치 */
+  }
+  20% {
+    transform: scale(0); /* 위로 떠오름 */
+  }
+  50% {
+    transform: scale(0); /* 위로 떠오름 */
+  }
+  100% {
+    transform: scale(1); /* 다시 원래 위치로 */
+  }
+}
+
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
