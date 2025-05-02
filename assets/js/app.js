@@ -55,7 +55,7 @@ const header = document.querySelector('header');
 const mainVisual = document.querySelector('.main-visual');
 
 window.addEventListener('scroll', () => {
-  const visualHeight = mainVisual.offsetHeight;
+  const visualHeight = mainVisual.offsetHeight - 40;
   const scrollTop = window.scrollY;
 
   if (scrollTop > visualHeight) {

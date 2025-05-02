@@ -293,6 +293,7 @@ header {
   top: 0;
   z-index: 2;
   transition: fadeIn 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   .logo-link {
     display: flex;
     width: 48px;
@@ -333,8 +334,6 @@ header {
   }
   &.active {
     position: fixed;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
     & + main {
       padding-top: 72px;
     }
