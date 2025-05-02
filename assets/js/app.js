@@ -177,6 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 window.addEventListener('load', () => {
+  // // 세션 데이터 초기화 (새로고침 시 이전 세션 상태를 지움)
+  // sessionStorage.removeItem('activeSection');
+
+  // // 페이지 로딩 후 맨 위로 스크롤
+  // setTimeout(() => {
+  //   window.scrollTo(0, 0);
+  // }, 0);  // 0ms 지연
+
   document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
     const rect = section.getBoundingClientRect();
     const sectionTop = rect.top + window.scrollY;
@@ -189,3 +197,5 @@ window.addEventListener('load', () => {
     }
   });
 });
+
+
