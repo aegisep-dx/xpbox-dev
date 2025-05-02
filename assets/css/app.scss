@@ -1039,10 +1039,11 @@ textarea {
   max-width: none;
   .scroll-track {
     display: flex;
-    animation: scrollLoop 32s linear infinite;
+    // animation: scrollLoop 50s linear infinite;
     gap: 56px;
     align-items: center;
     height: 200px;
+    will-change: transform;
     img {
       flex-shrink: 0;
       height: 80px;
@@ -1297,7 +1298,7 @@ footer {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
-    transform: translate(5px, 0); /* 위로 떠오름 */
+    transform: translate(5px, -5px); /* 위로 떠오름 */
   }
 }
 

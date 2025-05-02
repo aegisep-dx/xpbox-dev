@@ -73,21 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', checkHeaderActivation);
   checkHeaderActivation(); // 초기 실행
 
-  // 메뉴 클릭 시 해당 섹션에 강제로 active 클래스 추가
   document.querySelectorAll('header a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href');
       const targetEl = document.querySelector(targetId);
 
-      if (targetEl && targetEl.classList.contains('upslide')) {
-        // 부드럽게 스크롤된 후 active 클래스 추가 (약간의 delay 주기)
-        setTimeout(() => {
-          targetEl.classList.add('active');
-        }, 300); // 스크롤 완료 후 적용 (스크롤 속도에 따라 조절 가능)
+      if (targetEl) {
+        const targetOffset = targetEl.offsetTop;
+
+        // upslide 중 target보다 위에 있는 모든 섹션에 active 부여
+        document.querySelectorAll('section.upslide').forEach(section => {
+          if (section.offsetTop < targetOffset) {
+            section.classList.add('active');
+          }
+        });
+
+        // 타겟도 약간의 delay 후 active 부여
+        if (targetEl.classList.contains('upslide')) {
+          setTimeout(() => {
+            targetEl.classList.add('active');
+          }, 300); // 스크롤 완료 예상 시간
+        }
       }
     });
   });
-  
+
+
   // =========================
   // 3. IntersectionObserver를 이용한 .upslide 활성화
   // =========================
@@ -203,6 +214,29 @@ window.addEventListener('load', () => {
       observer.observe(section);
     }
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('scrollTrack');
+  const clones = track.cloneNode(true); // 전체 트랙을 복제
+  track.parentElement.appendChild(clones); // 복제 트랙 추가
+
+  let pos = 0;
+  const speed = 0.5; // 느리게 움직일수록 작게 설정
+
+  function animate() {
+    pos -= speed;
+    if (Math.abs(pos) >= track.offsetWidth) {
+      pos = 0; // 다시 처음으로
+    }
+
+    track.style.transform = `translateX(${pos}px)`;
+    clones.style.transform = `translateX(${pos}px)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 });
 
 
