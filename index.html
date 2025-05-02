@@ -5,26 +5,34 @@
   <title>Xp문서함 랜딩</title>
   <link rel="preload" href="./assets/css/app.min.css" as="style"/>
   <link rel="stylesheet" href="./assets/css/app.min.css" as="style" />
-<style>
-  .toast-message {
-    background: #fff;
-    position: fixed;
-    bottom: 80px;
-    border-radius: 12px;
-    box-shadow: 4px 5px 24px 0 rgba(0, 0, 0, 0.1);
-    padding: 22px 22px 22px 20px;
-    color: #4A4E60;
-    font-weight: 500;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    line-height: 100%;
-    z-index: 15;
-  }
-</style>
+  <script src="./assets/js/axios.min.js"></script>
+  <style>
+    .toast-message {
+      background: #fff;
+      position: fixed;
+      bottom: 80px;
+      border-radius: 12px;
+      box-shadow: 4px 5px 24px 0 rgba(0, 0, 0, 0.1);
+      padding: 22px 22px 22px 20px;
+      color: #4A4E60;
+      font-weight: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 100%;
+      z-index: 15;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+  </style>
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+  </script>
 </head>
 
 <body>
@@ -88,7 +96,7 @@
     <nav class="gnb">
       <ul>
         <li>
-          <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" href="#">Xp문서함</a>
+          <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" href="javascript:void(0);">Xp문서함</a>
         </li>
         <li>
           <a href="#use-cases">활용 예시</a>
@@ -114,16 +122,16 @@
     <i><img src="./assets/img/top_ico.svg" alt="위로 아이콘" /></i>
   </button>
 
-  <main> 
+  <main>
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
-      <!-- 
+      <!--
         TODO
         소개자료 및 사용안내의 경우 관련 파일을 추가해야할 것 같습니다.
        -->
       <button type="button">
         <i class="info" aria-label="사용안내 아이콘">
-        </i> 
+        </i>
         사용 안내
       </button>
       <button type="button">
@@ -132,13 +140,13 @@
         소개 자료
       </button>
     </aside>
-    
+
 
     <article  id="intro" class="main-visual" aria-label="메인 비주얼">
       <section>
         <h1>
           <img src="./assets/img/visual-txt-01.png" alt="관리의 시작,  ">
-          
+
           <div class="visual-img-motion">
             <div aria-index="1" aria-label="비주얼 아이콘">
               <img src="./assets/img/visual-img-011.svg" alt="비주얼 좌측 이미지">
@@ -488,7 +496,6 @@
     </article>
 
     <article id="contact" aria-label="문의 및 제휴 접수">
-      <!-- TODO: FORM 작업 - 엘리먼트 네임, 아이디만 맞추면 동작합니다 -->
       <section>
         <div class="sub-title">
           <h2>
@@ -498,8 +505,8 @@
         </div>
         <form onsubmit="onSubmit(event)" class="section-contents form">
           <div class="form-input">
-            <label class="required" for="phocompanyne">아파트 단지명 / 단지코드 또는 회사명</label>
-            <input type="text" name="company" id="company" placeholder="이지스아파트 89999 또는 이지스주식회사" />
+            <label class="required" for="company">아파트 단지명 / 단지코드 또는 회사명</label>
+            <input type="text" name="company" id="company" placeholder="아파트 단지명 / 단지코드 또는 회사명" />
           </div>
           <div class="form-input">
             <label class="required" for="email">이메일</label>
@@ -507,15 +514,15 @@
           </div>
           <div class="form-input">
             <label class="required" for="phone">전화번호</label>
-            <input type="tel" name="phone" id="phone" class="error" placeholder="전화번호" value="0202020" />
+            <input type="tel" name="phone" id="phone" placeholder="전화번호" />
           </div>
           <div class="form-input">
             <label class="required" for="content">문의 내용</label>
-            <textarea name="content" id="content" placeholder="문의내용"></textarea>
-            <span class="text-count">0/500</span>
+            <textarea name="content" id="content" placeholder="문의 내용"></textarea>
+            <span class="text-count"><span></span>/500</span>
           </div>
           <div class="check-btn">
-            <input type="checkbox" id="checkData">
+            <input type="checkbox" id="checkData" name="checkData" />
             <label for="checkData">
               <span></span>
               <em>필수</em>
@@ -525,10 +532,6 @@
           <button type="submit" class="contact-submit">신청하기</button>
         </form>
       </section>
-      <!-- TODO 
-        무한루프 이벤트 부탁드립니다.
-        아주 미묘하게 아쉽게 덜되고 있어서, 컨텐츠가 너무 넓을경우의 문제가 발생합니다.
-       -->
       <section class="scroll-wrap" aria-label="affiliated-area">
         <div class="scroll-track" id="scrollTrack">
           <img src="./assets/img/apti.svg" alt="아파트아이 로고">
@@ -539,7 +542,7 @@
           <img src="./assets/img/aptdesk.svg" alt="아파트데스크 로고">
         </div>
       </section>
-    </article>    
+    </article>
   </main>
   <footer>
     <section class="foot-box">
@@ -556,11 +559,7 @@
         </p>
       </div>
       <div class="foot-button">
-        <!-- TODO
-            1:1 원격지원 링크
-            xphub다운로드 링크
-         -->
-        <a class="remote-btn" href="https://822.co.kr/" target="_blank">1:1 원격지원</a> 
+        <a class="remote-btn" href="https://822.co.kr/" target="_blank">1:1 원격지원</a>
         <a class="xphub-down-btn" href="https://xphub.xperp.co.kr/" target="_blank">
           <i><img src="./assets/img/xphub-icon.svg" alt="xphub아이콘"></i>
           XpHUB 다운로드
@@ -568,10 +567,7 @@
       </div>
     </section>
   </footer>
-<!-- <img src="assets/img/img.png" alt="" onclick="callCreateIssueHello()"> -->
-<script src="./assets/js/axios.min.js"></script>
-<script src="./assets/js/app.js"></script>
 
+  <script src="./assets/js/app.js"></script>
 </body>
-  
 </html>

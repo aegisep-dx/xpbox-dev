@@ -6,43 +6,68 @@ function callCreateIssueHello() {
   axios.get('https://lxxofjjdpxrprtapiwww.supabase.co/functions/v1/createissue').then(console.log);
 }
 
+let working = false;
+
 function onSubmit(event) {
   event.preventDefault();
+  if (working) return;
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData.entries());
-  const { company, email, phone, content } = data;
+  const { company, email, phone, content, checkData } = data;
 
   if (company.trim().length <= 1) {
     alert('회사/단지명을 확인해주세요.');
+    document.querySelector('#company').classList.add('error');
     document.querySelector('#company').focus();
     return;
   }
   if (!EMAIL_REGEX.test(email)) {
     alert('이메일을 확인해주세요.');
+    document.querySelector('#email').classList.add('error');
     document.querySelector('#email').focus();
     return;
   }
   if (!TEL_REGEX.test(phone)) {
     alert('전화번호를 확인해주세요.');
+    document.querySelector('#phone').classList.add('error');
     document.querySelector('#phone').focus();
     return;
   }
   if (content.trim().length < 10) {
     alert('문의사항을 10자이상 입력해주세요');
+    document.querySelector('#content').classList.add('error');
     document.querySelector('#content').focus();
     return;
   }
 
-  console.log(data);
+  if (!checkData) {
+    alert('개인정보 처리방침에 동의해야 합니다.');
+    return;
+  }
+
+  working = true;
 
   // 주석 제거하면 바로 사용 가능
   // axios.post('https://lxxofjjdpxrprtapiwww.supabase.co/functions/v1/createissue', data).then(console.log);
+  const toast = document.querySelector('.toast-message');
+  toast.style.display = 'flex';
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toast.style.opacity = '1';
+      working = false;
+    }, 500);
+  }, 1000);
 }
 
 window.addEventListener('DOMContentLoaded', async ()=> {
-  // functions
-});
-document.addEventListener('DOMContentLoaded', () => {
+
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+
+
   // =========================
   // 1. 비주얼 아이콘 애니메이션 순차 실행
   // =========================
@@ -74,29 +99,34 @@ document.addEventListener('DOMContentLoaded', () => {
   checkHeaderActivation(); // 초기 실행
 
   document.querySelectorAll('header a[href^="#"]').forEach(link => {
-  link.addEventListener('click', (e) => {
-    const targetId = link.getAttribute('href');
-    const targetEl = document.querySelector(targetId);
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
 
-    if (targetEl) {
-      const targetOffset = targetEl.offsetTop;
+      if (targetEl) {
+        const targetOffset = targetEl.offsetTop;
 
-      // upslide 중 target보다 위에 있는 모든 섹션에 active 부여
-      document.querySelectorAll('section.upslide').forEach(section => {
-        if (section.offsetTop < targetOffset) {
-          section.classList.add('active');
+        // upslide 중 target보다 위에 있는 모든 섹션에 active 부여
+        document.querySelectorAll('section.upslide').forEach(section => {
+          if (section.offsetTop < targetOffset) {
+            section.classList.add('active');
+          }
+        });
+
+        // 타겟도 약간의 delay 후 active 부여
+        if (targetEl.classList.contains('upslide')) {
+          setTimeout(() => {
+            targetEl.classList.add('active');
+          }, 300); // 스크롤 완료 예상 시간
         }
-      });
-
-      // 타겟도 약간의 delay 후 active 부여
-      if (targetEl.classList.contains('upslide')) {
-        setTimeout(() => {
-          targetEl.classList.add('active');
-        }, 300); // 스크롤 완료 예상 시간
       }
-    }
+    });
+
+    const contentTextArea = document.getElementById('content');
+    contentTextArea.addEventListener('input', (e) => {
+      e.target.nextElementSibling.querySelector('span > span').innerHTML = e.target.value.length;
+    });
   });
-});
 
 
   // =========================
@@ -113,11 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
     threshold: 0.1
   });
 
+
   document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
     const rect = section.getBoundingClientRect();
     const sectionTop = rect.top + window.scrollY;
     const currentScroll = window.scrollY + window.innerHeight;
-
     // 스크롤된 위치에 이미 보이는 경우 바로 active
     if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
       section.classList.add('active');
@@ -132,11 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   const installBtn = document.querySelector('.installation-drop-btn button');
   const installList = document.querySelector('.installation-list');
-
   if (installBtn && installList) {
     installBtn.setAttribute('aria-expanded', 'true');
     installList.classList.add('active');
-
     installBtn.addEventListener('click', () => {
       const isExpanded = installBtn.getAttribute('aria-expanded') === 'true';
       installBtn.setAttribute('aria-expanded', !isExpanded);
@@ -159,12 +187,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+
+  // =========================
+  // 6. 입력 엘리컨트들, 재입력시에는 에러 여부 리셋
+  // =========================
+  Array.from(document.querySelectorAll('form input, form textarea')).forEach(inputs => {
+    inputs.addEventListener('input', (e) => {e.target.classList.remove('error')})
+  })
+
+
+  // =========================
+  // 7. 개인정보 처리방침 등을 위한 모달 관련
+  // =========================
   //모달 이벤트
   const btnLawDetail = document.getElementById("btnLawDetail"); //
-  const btnCheckModal = document.getElementById("btnCheckModal"); // 
+  const btnCheckModal = document.getElementById("btnCheckModal"); //
   const modalDim = document.querySelector(".modal-dim"); // 클래스 기반으로 선택
-  const lawModal = document.getElementById("lawModal"); 
+  const lawModal = document.getElementById("lawModal");
   const checkModal = document.getElementById("checkModal");
   const closeBtns = document.querySelectorAll(".close-btn");
 
@@ -190,36 +229,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-});
+  // =========================
+  // 8. 흐르는 제휴 업체 로고 무한히 흐르도록 처리
+  // =========================
 
-
-// TODO 현재 새로고침하면 active활성화 된 부분때문에 번쩍하는 경우가 생깁니다. 번쩍하지 않게, 최상단으로 이동 혹은 기존 스크롤  위치에서도 문제없이 번쩍안하고 노출되게 가능할까요?
-window.addEventListener('load', () => {
-  // // 세션 데이터 초기화 (새로고침 시 이전 세션 상태를 지움)
-  // sessionStorage.removeItem('activeSection');
-
-  // // 페이지 로딩 후 맨 위로 스크롤
-  // setTimeout(() => {
-  //   window.scrollTo(0, 0);
-  // }, 0);  // 0ms 지연
-
-  document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
-    const rect = section.getBoundingClientRect();
-    const sectionTop = rect.top + window.scrollY;
-    const currentScroll = window.scrollY + window.innerHeight;
-
-    if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
-      section.classList.add('active');
-    } else {
-      observer.observe(section);
-    }
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
   const track = document.getElementById('scrollTrack');
-  const clones = track.cloneNode(true); // 전체 트랙을 복제
+  const clones = track.cloneNode(true);
+  const clones2 = track.cloneNode(true);// 전체 트랙을 복제
   track.parentElement.appendChild(clones); // 복제 트랙 추가
+  track.parentElement.appendChild(clones2); // 복제 트랙 추가
 
   let pos = 0;
   const speed = 0.5; // 느리게 움직일수록 작게 설정
@@ -232,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.style.transform = `translateX(${pos}px)`;
     clones.style.transform = `translateX(${pos}px)`;
+    clones2.style.transform = `translateX(${pos}px)`;
 
     requestAnimationFrame(animate);
   }
