@@ -678,7 +678,6 @@ section {
         #000;
         margin-left: auto;
         transform: rotate(90deg);
-        transition: all .2s;
       }
       &[aria-expanded="true"] {
         &:after {
