@@ -728,7 +728,6 @@ section {
   &-list {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
     background: #fff;
     border-radius: 20px;
     display: flex;
@@ -739,7 +738,6 @@ section {
       max-height: 500px; /* 펼쳐질 때의 높이 */    
       padding: 40px; 
       height: auto;
-      transition: all .2s;
     }
     &-item, li  {
       display: flex;
@@ -893,7 +891,7 @@ section {
           img[aria-index="7"] {
             position: absolute;
             z-index: 1;
-            left: 64px;
+            left: 60px;
             top: 49px;
             animation: visual-01-rotate 3s ease-in-out infinite;
             transform-origin: 0% 50%; 
@@ -908,13 +906,13 @@ section {
         &[aria-index="3"] {
           right: 19px;
           top: 34px;
-          // animation: visual-03 3s ease-in-out infinite;
+          animation: visual-03 3s ease-in-out infinite;
           img[aria-index="6"] {
             position: absolute;
             z-index: 1;
             right: 64px;
             top: 61px;
-            animation: visual-03-rotate 3s ease-in-out infinite;
+            // animation: visual-03-rotate 3s ease-in-out infinite;
             transform-origin: 0% 50%;
             transform-box: fill-box; 
           }
@@ -1010,9 +1008,12 @@ textarea {
       span {
         background: url("../img/check-checked.svg") no-repeat center;
       }
-    }
-
+    }    
   } 
+  a {
+    display: inline-flex;
+    cursor: pointer;
+  }
 }
 
 .contact-submit {
@@ -1088,7 +1089,7 @@ footer {
       margin-left: auto;
       display: flex;
       gap: 12px;
-      button {
+      a {
         padding: 5px 14px;
         height: 32px;
         background: #46464b;
@@ -1098,6 +1099,7 @@ footer {
         justify-content: center;
         border-radius: 4px;
         gap: 4px;
+        font-size: 13px;
       }
     }
   }
@@ -1290,22 +1292,12 @@ footer {
   }
 }
 
-
 @keyframes visual-03 {
   0%, 100% {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
-    transform: translate(2px, -3px); /* 위로 떠오름 */
-  }
-}
-
-@keyframes visual-03 {
-  0%, 100% {
-    transform: translate(0); /* 시작 위치 */
-  }
-  50% {
-    transform: translate(2px, -3px); /* 위로 떠오름 */
+    transform: translate(5px, 0); /* 위로 떠오름 */
   }
 }
 
@@ -1358,5 +1350,8 @@ footer {
   }
   100% {
     transform: translateX(-50%);
+  }
+  0% {
+    transform: translateX(0);
   }
 }

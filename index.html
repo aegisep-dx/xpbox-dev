@@ -84,29 +84,28 @@
     </div>
   </div>
   <header>
-    <a class="logo-link">
-
-    </a>
+    <a class="logo-link"  href="#" aria-label="로고 영역, home"></a>
     <nav class="gnb">
       <ul>
         <li>
-          <a class="">Xp문서함</a>
+          <a href="#">Xp문서함</a>
         </li>
         <li>
-          <a class="" href="#use-cases">활용 예시</a>
+          <a href="#use-cases">활용 예시</a>
         </li>
         <li>
-          <a class="" href="#installation">설치 안내</a>
+          <a href="#installation">설치 안내</a>
         </li>
         <li>
-          <a class="" href="#faq">FAQ</a>
+          <a href="#faq">FAQ</a>
         </li>
         <li>
-          <a class=""  href="#contact">문의 / 제휴 접수</a>
+          <a  href="#contact">문의 / 제휴 접수</a>
         </li>
       </ul>
     </nav>
-    <button type="button" class="button">
+    <!-- TODO 사용하기 관련 이벤트 처리 필요 -->
+    <button type="button" class="button" aira-label="문서함 사용하기 버튼 ">
       Xp문서함 사용하기
     </button>
   </header>
@@ -168,7 +167,8 @@
           문서 관리, 이제 어렵게 하지 마세요!<br>
           Xp문서함은 언제 어디서나 아파트 관리사무소 문서 편집이 가능합니다.
         </p>
-        <button>
+        <!-- TODO 사용하기 관련 이벤트 처리 필요 -->
+        <button type="button" aira-label="문서함 사용하기 버튼 ">
           <i class="icon down"></i>
           Xp문서함 사용하기
         </button>
@@ -511,39 +511,39 @@
             <span class="text-count">0/500</span>
           </div>
           <div class="check-btn">
-            <input type="checkbox" id="btnCheckModal">
-            <label for="btnCheckModal">
+            <input type="checkbox" id="checkData">
+            <label for="checkData">
               <span></span>
               <em>필수</em>
-              <strong>개인(신용)정보 수집·이용</strong>에 동의합니다. 상담 외 다른 목적으로 사용되지 않습니다.
             </label>
+            <a id="btnCheckModal"><strong>개인(신용)정보 수집·이용</strong></a>에 동의합니다. 상담 외 다른 목적으로 사용되지 않습니다.
           </div>
           <button type="submit" class="contact-submit">신청하기</button>
         </form>
       </section>
       <section class="scroll-wrap" aria-label="affiliated-area">
         <div class="scroll-track">
-          <img src="./assets/img/apti.svg" alt="">
-          <img src="./assets/img/eco.svg" alt="">
-          <img src="./assets/img/kepo.svg" alt="">
-          <img src="./assets/img/nfa.svg" alt="">
-          <img src="./assets/img/xperp.svg" alt="">
-          <img src="./assets/img/aptdesk.svg" alt="">
+          <img src="./assets/img/apti.svg" alt="아파트아이 로고">
+          <img src="./assets/img/eco.svg" alt="한국환경공단 로고">
+          <img src="./assets/img/kepo.svg" alt="한국전력공사 로고">
+          <img src="./assets/img/nfa.svg" alt="소방청 로고">
+          <img src="./assets/img/xperp.svg" alt="XpERP 로고">
+          <img src="./assets/img/aptdesk.svg" alt="아파트데스크 로고">
       
           <!-- 무한 루프용 복제 -->
-          <img src="./assets/img/apti.svg" alt="">
-          <img src="./assets/img/eco.svg" alt="">
-          <img src="./assets/img/kepo.svg" alt="">
-          <img src="./assets/img/nfa.svg" alt="">
-          <img src="./assets/img/xperp.svg" alt="">
-          <img src="./assets/img/aptdesk.svg" alt="">
+          <img src="./assets/img/apti.svg" alt="아파트아이 로고">
+          <img src="./assets/img/eco.svg" alt="한국환경공단 로고">
+          <img src="./assets/img/kepo.svg" alt="한국전력공사 로고">
+          <img src="./assets/img/nfa.svg" alt="소방청 로고">
+          <img src="./assets/img/xperp.svg" alt="XpERP 로고">
+          <img src="./assets/img/aptdesk.svg" alt="아파트데스크 로고">
 
-          <img src="./assets/img/apti.svg" alt="">
-          <img src="./assets/img/eco.svg" alt="">
-          <img src="./assets/img/kepo.svg" alt="">
-          <img src="./assets/img/nfa.svg" alt="">
-          <img src="./assets/img/xperp.svg" alt="">
-          <img src="./assets/img/aptdesk.svg" alt="">
+          <img src="./assets/img/apti.svg" alt="아파트아이 로고">
+          <img src="./assets/img/eco.svg" alt="한국환경공단 로고">
+          <img src="./assets/img/kepo.svg" alt="한국전력공사 로고">
+          <img src="./assets/img/nfa.svg" alt="소방청 로고">
+          <img src="./assets/img/xperp.svg" alt="XpERP 로고">
+          <img src="./assets/img/aptdesk.svg" alt="아파트데스크 로고">
         </div>
       </section>
     </article>    
@@ -567,11 +567,11 @@
             1:1 원격지원 링크
             xphub다운로드 링크
          -->
-        <button class="remote-btn">1:1 원격지원</button> 
-        <button class="xphub-down-btn">
+        <a class="remote-btn" href="https://822.co.kr/" target="_blank">1:1 원격지원</a> 
+        <a class="xphub-down-btn" href="https://xphub.xperp.co.kr/" target="_blank">
           <i><img src="./assets/img/xphub-icon.svg" alt="xphub아이콘"></i>
           XpHUB 다운로드
-        </button>
+        </a>
       </div>
     </section>
   </footer>

@@ -73,7 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', checkHeaderActivation);
   checkHeaderActivation(); // 초기 실행
 
+  // 메뉴 클릭 시 해당 섹션에 강제로 active 클래스 추가
+  document.querySelectorAll('header a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
 
+      if (targetEl && targetEl.classList.contains('upslide')) {
+        // 부드럽게 스크롤된 후 active 클래스 추가 (약간의 delay 주기)
+        setTimeout(() => {
+          targetEl.classList.add('active');
+        }, 300); // 스크롤 완료 후 적용 (스크롤 속도에 따라 조절 가능)
+      }
+    });
+  });
+  
   // =========================
   // 3. IntersectionObserver를 이용한 .upslide 활성화
   // =========================
@@ -137,12 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   //모달 이벤트
   const btnLawDetail = document.getElementById("btnLawDetail"); //
-  const btnCheckModal = document.getElementById("btnCheckModal"); // 필수 체크박스
+  const btnCheckModal = document.getElementById("btnCheckModal"); // 
   const modalDim = document.querySelector(".modal-dim"); // 클래스 기반으로 선택
   const lawModal = document.getElementById("lawModal"); 
   const checkModal = document.getElementById("checkModal");
   const closeBtns = document.querySelectorAll(".close-btn");
-
 
   // 모달 열기
   btnLawDetail.addEventListener("click", () => {
@@ -150,15 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
     lawModal.classList.add("active");
   });
 
-  //
-  // TODO 해당 관련 이벤트는 한번 검수해주세요. 동의를 하고나면 더 노출안 하는 것인지 이런 처리만 부탁드립니다.
-  // 필수 체크박스
-  btnCheckModal.addEventListener("change", () => {
-    if (btnCheckModal.checked) {
-      modalDim.classList.add("active");
-      checkModal.classList.add("active");
-    }
-    // 체크 해제 시 아무 일도 하지 않음
+  btnCheckModal.addEventListener("click", () => {
+    modalDim.classList.add("active");
+    checkModal.classList.add("active");
   });
 
   // 모달 닫기 (모든 close-btn에 적용)
