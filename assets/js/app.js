@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+// TODO 현재 새로고침하면 active활성화 된 부분때문에 번쩍하는 경우가 생깁니다. 번쩍하지 않게, 최상단으로 이동 혹은 기존 스크롤  위치에서도 문제없이 번쩍안하고 노출되게 가능할까요?
 window.addEventListener('load', () => {
   // // 세션 데이터 초기화 (새로고침 시 이전 세션 상태를 지움)
   // sessionStorage.removeItem('activeSection');
