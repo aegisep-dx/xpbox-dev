@@ -74,29 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
   checkHeaderActivation(); // 초기 실행
 
   document.querySelectorAll('header a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      const targetEl = document.querySelector(targetId);
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href');
+    const targetEl = document.querySelector(targetId);
 
-      if (targetEl) {
-        const targetOffset = targetEl.offsetTop;
+    if (targetEl) {
+      const targetOffset = targetEl.offsetTop;
 
-        // upslide 중 target보다 위에 있는 모든 섹션에 active 부여
-        document.querySelectorAll('section.upslide').forEach(section => {
-          if (section.offsetTop < targetOffset) {
-            section.classList.add('active');
-          }
-        });
-
-        // 타겟도 약간의 delay 후 active 부여
-        if (targetEl.classList.contains('upslide')) {
-          setTimeout(() => {
-            targetEl.classList.add('active');
-          }, 300); // 스크롤 완료 예상 시간
+      // upslide 중 target보다 위에 있는 모든 섹션에 active 부여
+      document.querySelectorAll('section.upslide').forEach(section => {
+        if (section.offsetTop < targetOffset) {
+          section.classList.add('active');
         }
+      });
+
+      // 타겟도 약간의 delay 후 active 부여
+      if (targetEl.classList.contains('upslide')) {
+        setTimeout(() => {
+          targetEl.classList.add('active');
+        }, 300); // 스크롤 완료 예상 시간
       }
-    });
+    }
   });
+});
 
 
   // =========================

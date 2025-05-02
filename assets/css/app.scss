@@ -1037,6 +1037,7 @@ textarea {
   display: flex;
   margin: 120px 0 60px;
   max-width: none;
+  gap: 56px;
   .scroll-track {
     display: flex;
     // animation: scrollLoop 50s linear infinite;
