@@ -88,7 +88,7 @@
     <nav class="gnb">
       <ul>
         <li>
-          <a href="#">Xp문서함</a>
+          <a onclick="window.scrollTo({top: 0, behavior: 'smooth'})" href="#">Xp문서함</a>
         </li>
         <li>
           <a href="#use-cases">활용 예시</a>
@@ -117,8 +117,12 @@
   <main> 
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
+      <!-- 
+        TODO
+        소개자료 및 사용안내의 경우 관련 파일을 추가해야할 것 같습니다.
+       -->
       <button type="button">
-        <i class="info" aria-label="사용안내 아잌콘">
+        <i class="info" aria-label="사용안내 아이콘">
         </i> 
         사용 안내
       </button>
@@ -521,6 +525,10 @@
           <button type="submit" class="contact-submit">신청하기</button>
         </form>
       </section>
+      <!-- TODO 
+        무한루프 이벤트 부탁드립니다.
+        아주 미묘하게 아쉽게 덜되고 있어서, 컨텐츠가 너무 넓을경우의 문제가 발생합니다.
+       -->
       <section class="scroll-wrap" aria-label="affiliated-area">
         <div class="scroll-track" id="scrollTrack">
           <img src="./assets/img/apti.svg" alt="아파트아이 로고">

@@ -644,7 +644,6 @@ section {
   &-item {
     background: #fff;
     border-radius: 20px;
-    padding: 26px 32px;
     align-items: flex-start;
     border: 1px solid #e8eaee;
     transition: all .5s;
@@ -652,8 +651,10 @@ section {
       display: flex; 
       align-items: center;
       gap: 8px;
+      padding: 26px 32px;
       width: 100%;
       position: relative;
+      height: 80px;
       cursor: pointer;
       strong {
         color: #E2304F;
@@ -663,47 +664,34 @@ section {
       h3 {font-size: 20px; color: #000;}
       &:after {
         content: "";
-        position: absolute;
-        right: 0;
-        width :14px; height: 2px;
-        background: #000;
-        transform: rotate(0);
-      }
-      &:before {
-        content: "";
-        position: absolute;
-        right: 0;
-        width :14px; height: 2px;
-        background: 
-        #000;
+        position: relative;
         margin-left: auto;
-        transform: rotate(90deg);
+        display: flex;
+        width :28px !important; height: 28px !important;
+        background: url("../img/plus-icon.svg") no-repeat;
       }
       &[aria-expanded="true"] {
         &:after {
-          transform: rotate(0);
-        }
-        &:before {
-          transform: rotate(0);
+          background: url("../img/minus-icon.svg") no-repeat;
         }
       }
     }
     &.active {
       background: #F9F9F9;
       .faq-answer {
-        margin-top: 20px;
-        margin-left: 28px;
-        padding-top: 20px;
+        margin: 0 32px 0 60px;
+        padding: 20px 0 30px;
         border-top: 1px solid #e8eaee;
         height: auto;
-        width: calc(100% - 28px);
+        width: calc(100% - 92px);
       }
     }
     .faq-answer { 
-      overflow: hidden; height: 0;margin-left: 28px; transition: all .2s; border-color: #e8eaee;
+      overflow: hidden; height: 0; margin: 0 32px 0 60px; transition: all .2s; border-color: #e8eaee;
       p {
         font-size: 18px;
         line-height: 160%;
+        color: #272932;
       }
       .text-link {
         padding: 0; margin :0; 
