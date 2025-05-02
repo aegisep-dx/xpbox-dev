@@ -327,9 +327,10 @@ header {
     font-weight: 600;
     word-spacing: -0.02em;
     cursor: pointer;
-    transition: all 0.2s;
     &:hover {
-      background-color: #1A1A1A;
+      background-color: #41424A;
+      color: #fff;
+      border-color: #41424A;
     }
   }
   &.active {
@@ -341,6 +342,11 @@ header {
       background-color: #27282C;
       border-color: #27282C;
       color: #fff;
+      &:hover {
+        background-color: #41424A;
+        color: #fff;
+        border-color: #41424A;
+      }
     }
   }
 }
@@ -384,17 +390,17 @@ article {
       justify-content: flex-start;
       &.active {
         width: 100%;
+        transform: scale(1);
         max-width: 1517px;
         overflow: inherit;
-        transform: scale(1);
         .visual-icon {
           opacity: 1;
         }
         h2 {
-          transition-delay: 0.7s; opacity: 1; transform: translateY(0); 
+          transition-delay: 0.4s; opacity: 1; transform: translateY(0); 
         }
         p {
-          transition-delay: 1s; opacity: 1; transform: translateY(0); 
+          transition-delay: 0.8s; opacity: 1; transform: translateY(0); 
         }
       }
       h2 {
@@ -447,7 +453,7 @@ article {
         }
         &[data-icon="doc"] {
           left: 72px;
-          top: 0; 
+          top: 20px; 
         }
         &[data-icon="write"] {
           left: 0;
@@ -661,7 +667,6 @@ section {
         right: 0;
         width :14px; height: 2px;
         background: #000;
-        transition: all .2s;
         transform: rotate(0);
       }
       &:before {
@@ -677,8 +682,7 @@ section {
       }
       &[aria-expanded="true"] {
         &:after {
-          transform: rotate(90deg);
-          opacity: 0;
+          transform: rotate(0);
         }
         &:before {
           transform: rotate(0);
@@ -782,7 +786,6 @@ section {
         width: 28px;
         height: 28px;
         background: url("../img/drop-arrow.svg") no-repeat center;
-        transition: all .2s;
       }
       &[aria-expanded="true"] {
         &:after {
@@ -825,6 +828,8 @@ section {
   }
 }
 
+
+//메인 비주얼 영역
 .main-visual {
   display: block;
   height: calc(919px - 72px);
@@ -861,6 +866,8 @@ section {
       display: flex;
       align-items: center;
       gap: 8px;
+      width: 244px;
+      height: 64px;
       font-size: 20px;
       word-spacing: -0.01em;
       .icon {
@@ -868,6 +875,9 @@ section {
         width: 24px;
         height: 24px; 
         background: url("../img/down_ico.svg") no-repeat center;
+      }
+      &:hover {
+        background: #41424A;
       }
     }
     .visual-img-motion {
@@ -880,7 +890,16 @@ section {
         &[aria-index="1"] {
           left: 12px;
           top: 27px;
-          animation: visual-01 3s ease-in-out infinite;
+          // animation: visual-01 3s ease-in-out infinite;
+          img[aria-index="7"] {
+            position: absolute;
+            z-index: 1;
+            left: 64px;
+            top: 49px;
+            animation: visual-01-rotate 3s ease-in-out infinite;
+            transform-origin: 0% 50%; 
+            transform-box: fill-box;
+          }
         }
         &[aria-index="2"] {
           left: 181px;
@@ -890,7 +909,16 @@ section {
         &[aria-index="3"] {
           right: 19px;
           top: 34px;
-          animation: visual-03 3s ease-in-out infinite;
+          // animation: visual-03 3s ease-in-out infinite;
+          img[aria-index="6"] {
+            position: absolute;
+            z-index: 1;
+            right: 64px;
+            top: 61px;
+            animation: visual-03-rotate 3s ease-in-out infinite;
+            transform-origin: 0% 50%;
+            transform-box: fill-box; 
+          }
         }
         &[aria-index="4"] {
           left: 137px;
@@ -905,16 +933,13 @@ section {
             opacity: 0;
             transform: scale(0.8);
             transform-origin: center;
-            animation: blink 3s steps(1, start) infinite;
+            animation: blink 2s ease-in-out infinite;
           }
           #wifi-01 {
             animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
           }
-
-          
         }
       }
-      
     }
   }
 }
@@ -1001,20 +1026,26 @@ textarea {
   font-weight: 600;
   display: flex; align-items: center;
   justify-content: center;
+  &:hover {
+    background: #41424A;
+  }
 }
 
 .scroll-wrap {
   overflow: hidden;
   width: 100%;
   display: flex;
-  margin-top: 120px;
+  margin: 120px 0 60px;
   max-width: none;
   .scroll-track {
     display: flex;
     animation: scrollLoop 32s linear infinite;
     gap: 56px;
+    align-items: center;
+    height: 200px;
     img {
       flex-shrink: 0;
+      height: 80px;
     }
   }
 }
@@ -1083,6 +1114,8 @@ footer {
   background: #fff;
   border-radius: 8px;
   z-index: 11;
+  width: 80px;
+  height: 170px;
   filter: drop-shadow(4px 6px 13px rgba(0,0,0,0.06));
   button {
     display: flex;
@@ -1093,7 +1126,20 @@ footer {
     word-spacing: -0.02em;
     gap: 6px;
     line-height: 100%;
+    color: #6B6D78;
     cursor: pointer;
+    height: 85px;
+    i {
+      width: 24px;
+      height: 24px;
+      display:block;
+      &.info {
+        background: url("../img/info-icon.svg") no-repeat center;
+      }
+      &.data-info {
+        background: url("../img/info-data-icon.svg") no-repeat center;
+      } 
+    }
     &:first-child {
       border-bottom: 1px solid #e8eaee;
       padding: 20px 10px 18px;
@@ -1136,9 +1182,12 @@ footer {
   display: none;
   justify-content: center;
   z-index: 50;
+  &.active {
+    display: flex;
+  }
 }
 .modal-pop {
-  display: flex;
+  display: none;
   margin: auto;
   flex-direction: column;
   background: #fff;
@@ -1146,6 +1195,9 @@ footer {
   box-shadow: 4px 5px 48px 0 rgba(0,0,0,0.16);
   width: 616px;
   padding: 36px 32px 36px 36px;
+  &.active {
+    display: flex;
+  }
   .modal-header {
     display: flex;
     align-items: center;
@@ -1206,41 +1258,69 @@ footer {
 
 
 @keyframes visual-01 {
-  0%, 20%, 90%, 100% {
+  0%, 100% {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
-    transform: translate(-5px, -5px); /* 위로 떠오름 */
-  }
-  70% {
-    transform: translate(-5px, -5px) rotate(-5deg); /* 위로 떠오름 */
+    transform: translate(-3px, -3px); /* 위로 떠오름 */
   }
 }
+@keyframes visual-01-rotate {
+    0% {
+        transform: translateY(0px) rotate(30deg);
+    }
 
+    40% {
+        transform: translateY(6px) rotate(-17deg);
+    }
+
+    70% {
+        transform: translateY(6px) rotate(-17deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(30deg);
+    }
+}
 @keyframes visual-02 {
-  0%, 20%, 90%, 100% {
+  0%, 100% {
     transform: translateY(0) scale(1); /* 시작 위치 */
   }
   50% {
-    transform: translateY(-10px) scale(1.025); /* 위로 떠오름 */
-  }
-  70% {
-    transform: translateY(-10px) scale(1.025); /* 위로 떠오름 */
+    transform: translateY(-6px) scale(1.025); /* 위로 떠오름 */
   }
 }
 
 
 @keyframes visual-03 {
-  0%, 20%, 90%, 100% {
+  0%, 100% {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
-    transform: translate(5px, 5px) rotate(3deg); /* 위로 떠오름 */
+    transform: translate(2px, -3px); /* 위로 떠오름 */
+  }
+}
+
+@keyframes visual-03 {
+  0%, 100% {
+    transform: translate(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translate(2px, -3px); /* 위로 떠오름 */
+  }
+}
+
+@keyframes visual-03-rotate {
+  0%, 40%, 50%, 90%, 100% {
+    transform: rotate(0); /* 시작 위치 */
+  }
+  25%, 75% {
+    transform: translate(-2px, -7px) rotate(45deg); /* 위로 떠오름 */
   }
 }
 
 @keyframes blink {
-  0%, 49% {
+  0%, 100%{
     opacity: 0;
   }
   50%, 100% {
@@ -1253,7 +1333,7 @@ footer {
     transform: translateY(0); /* 시작 위치 */
   }
   50% {
-    transform: translateY(-10px); /* 위로 떠오름 */
+    transform: translateY(-5px); /* 위로 떠오름 */
   }
 }
 

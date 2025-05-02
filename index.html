@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Xp문서함 랜딩</title>
-  <link rel="stylesheet" href="./assets/css/app.min.css?v3" />
+  <link rel="preload" href="./assets/css/app.min.css" as="style"/>
+  <link rel="stylesheet" href="./assets/css/app.min.css" as="style" />
 <style>
   .toast-message {
     background: #fff;
@@ -38,7 +39,7 @@
     접수가 완료되었습니다. 담당자가 이메일로 곧 연락드리겠습니다.
   </div>
   <div class="modal-dim">
-    <div class="modal-pop">
+    <div class="modal-pop" id="lawModal">
       <div class="modal-header">
         <h2>개인정보처리방침</h2>
         <button class="close-btn" aria-label="닫기버튼"></button>
@@ -64,7 +65,7 @@
       </div>
     </div>
 
-    <div class="modal-pop">
+    <div class="modal-pop" id="checkModal">
       <div class="modal-header">
         <h2>개인(신용)정보 수집·이용</h2>
         <button class="close-btn" aria-label="닫기버튼"></button>
@@ -118,14 +119,12 @@
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
       <button type="button">
-        <i>
-          <img src="./assets/img/info-icon.svg" alt="사용안내 아이콘">
+        <i class="info" aria-label="사용안내 아잌콘">
         </i> 
         사용 안내
       </button>
       <button type="button">
-        <i>
-          <img src="./assets/img/info-data-icon.svg" alt="소개 자료 아이콘">
+        <i class="data-info" aria-label="소개자료 아잌콘">
         </i>
         소개 자료
       </button>
@@ -135,21 +134,24 @@
     <article  id="intro" class="main-visual" aria-label="메인 비주얼">
       <section>
         <h1>
-          관리의 시작,  
+          <img src="./assets/img/visual-txt-01.png" alt="관리의 시작,  ">
+          
           <div class="visual-img-motion">
-            <div aria-index="1" aria-label="와이파이 아이콘">
-              <img src="./assets/img/visual-img-01.svg" alt="비주얼 좌측 이미지">
+            <div aria-index="1" aria-label="비주얼 아이콘">
+              <img src="./assets/img/visual-img-011.svg" alt="비주얼 좌측 이미지">
+              <img src="./assets/img/visual-img-01-1.svg" alt="손위치" aria-index="7">
             </div>
-            <div aria-index="2" aria-label="와이파이 아이콘">
+            <div aria-index="2" aria-label="중앙 아이콘">
               <img src="./assets/img/visual-img-02.svg" alt="중앙 폴더 이미지">
             </div>
-            <div  aria-index="4" aria-label="와이파이 아이콘">
+            <div  aria-index="4" aria-label="사람 아이콘">
               <img src="./assets/img/visual-img-02-1.svg" alt="사람 이미지">
             </div>
-            <div  aria-index="3" aria-label="와이파이 아이콘">
-              <img src="./assets/img/visual-img-03.svg" alt="와이파이 신호">
+            <div  aria-index="3" >
+              <img src="./assets/img/visual-img-033.svg" alt="문서 및 사람 노트북 이미지">
+              <img src="./assets/img/visual-img-03-1.svg" alt="손위치" aria-index="6">
             </div>
-            <div class="" aria-index="5">
+            <div class="" aria-index="5" aria-label="와이파이 아이콘">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M15.2063 20C15.2063 15.9391 13.6244 12.1212 10.7516 9.24842C7.87879 6.37562 4.06095 4.7937 0 4.7937V0C5.34155 0 10.3647 2.08184 14.1414 5.85859C17.9182 9.63534 20 14.6584 20 20H15.2063Z"
@@ -160,7 +162,7 @@
               </svg>
             </div>
           </div>
-          Xp문서함 
+          <img src="./assets/img/visual-txt-02.png" alt="Xp문서함  ">
         </h1>
         <p>
           문서 관리, 이제 어렵게 하지 마세요!<br>
@@ -186,13 +188,13 @@
           <img src="./assets/img/file/visual-pdf.svg" alt="pdf 아이콘">
         </i>
         <i class="visual-icon main-icon" data-delay="0.5s" data-icon="excel">
-          <img src="./assets/img/file/visual-excel.svg" alt="excel 아이콘">
+          <img src="./assets/img/file/visual-excel.png" alt="excel 아이콘">
         </i>
         <i class="visual-icon main-icon" data-delay="0.7s" data-icon="word">
-          <img src="./assets/img/file/visual-word.svg" alt="word 아이콘">
+          <img src="./assets/img/file/visual-word.png" alt="word 아이콘">
         </i>
         <i class="visual-icon main-icon" data-delay="0.9s" data-icon="ppt">
-          <img src="./assets/img/file/visual-ppt.svg" alt="ppt 아이콘">
+          <img src="./assets/img/file/visual-ppt.png" alt="ppt 아이콘">
         </i>
         <i class="visual-icon" data-delay="1.1s" data-icon="file">
           <img src="./assets/img/file/visual-file.svg" alt="파일 아이콘">
@@ -472,7 +474,7 @@
                 <p>
                   아파트 관리소 업무 중 개인정보를 포함한 자료를 취급할 때는 ‘개인정보보호법’을 준수해야 합니다.<br>
                   법령 준수 및 안전한 파일 관리를 위해 Xp문서함 사용이 필요해요.<br>
-                  <button class="text-link">자세히 보기</button>
+                  <button class="text-link" id="btnLawDetail">자세히 보기</button>
                 </p>
               </div>
             </li>
@@ -509,8 +511,8 @@
             <span class="text-count">0/500</span>
           </div>
           <div class="check-btn">
-            <input type="checkbox" id="checkDate">
-            <label for="checkDate">
+            <input type="checkbox" id="btnCheckModal">
+            <label for="btnCheckModal">
               <span></span>
               <em>필수</em>
               <strong>개인(신용)정보 수집·이용</strong>에 동의합니다. 상담 외 다른 목적으로 사용되지 않습니다.

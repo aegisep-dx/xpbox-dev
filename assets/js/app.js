@@ -42,105 +42,150 @@ function onSubmit(event) {
 window.addEventListener('DOMContentLoaded', async ()=> {
   // functions
 });
+document.addEventListener('DOMContentLoaded', () => {
+  // =========================
+  // 1. 비주얼 아이콘 애니메이션 순차 실행
+  // =========================
+  const icons = document.querySelectorAll('.visual-icon');
+  icons.forEach((el, idx) => {
+    el.style.setProperty('--delay', `${idx * 0.1}s`);
+    el.classList.add('active');
+  });
 
-const icons = document.querySelectorAll('.visual-icon');
 
-icons.forEach((el, idx) => {
-  el.style.setProperty('--delay', `${idx * 0.1}s`);
-  el.classList.add('active'); // 애니메이션 트리거됨
-});
+  // =========================
+  // 2. 헤더 active 처리 (스크롤 시 or 초기 로딩 시)
+  // =========================
+  const header = document.querySelector('header');
+  const mainVisual = document.querySelector('.main-visual');
 
-// 스크롤 시 header에 클래스 부여
-const header = document.querySelector('header');
-const mainVisual = document.querySelector('.main-visual');
+  function checkHeaderActivation() {
+    const visualHeight = mainVisual.offsetHeight - 40;
+    const scrollTop = window.scrollY;
 
-window.addEventListener('scroll', () => {
-  const visualHeight = mainVisual.offsetHeight - 40;
-  const scrollTop = window.scrollY;
-
-  if (scrollTop > visualHeight) {
-    header.classList.add('active');
-  } else {
-    header.classList.remove('active');
+    if (scrollTop > visualHeight) {
+      header.classList.add('active');
+    } else {
+      header.classList.remove('active');
+    }
   }
-});
 
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target); // 한 번만 작동하게
+  window.addEventListener('scroll', checkHeaderActivation);
+  checkHeaderActivation(); // 초기 실행
+
+
+  // =========================
+  // 3. IntersectionObserver를 이용한 .upslide 활성화
+  // =========================
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // 한 번만 실행
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
+    const currentScroll = window.scrollY + window.innerHeight;
+
+    // 스크롤된 위치에 이미 보이는 경우 바로 active
+    if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
+      section.classList.add('active');
+    } else {
+      observer.observe(section);
     }
   });
-}, {
-  threshold: 0.1
-});
 
-// document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
-//   const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-//   const currentScroll = window.scrollY + window.innerHeight;
 
-//   if (currentScroll > sectionTop + (section.offsetHeight * 0.1)) {
-//     // 이미 화면에 충분히 노출된 상태면 바로 active
-//     section.classList.add('active');
-//   } else {
-//     // 아직 노출 안됐으면 observer로 감시
-//     observer.observe(section);
-//   }
-// });
+  // =========================
+  // 4. 설치 가이드 드롭다운 초기 상태 및 토글
+  // =========================
+  const installBtn = document.querySelector('.installation-drop-btn button');
+  const installList = document.querySelector('.installation-list');
 
-document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
-  const rect = section.getBoundingClientRect();
-  const sectionTop = rect.top + window.scrollY;
-  const sectionBottom = rect.bottom + window.scrollY;
-  const currentScroll = window.scrollY + window.innerHeight;
+  if (installBtn && installList) {
+    installBtn.setAttribute('aria-expanded', 'true');
+    installList.classList.add('active');
 
-  // 현재 뷰포트보다 아래에 있는 경우만 observe
-  if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
-    section.classList.add('active');
-  } else {
-    observer.observe(section);
+    installBtn.addEventListener('click', () => {
+      const isExpanded = installBtn.getAttribute('aria-expanded') === 'true';
+      installBtn.setAttribute('aria-expanded', !isExpanded);
+      installList.classList.toggle('active', !isExpanded);
+    });
   }
-});
 
 
+  // =========================
+  // 5. FAQ 아코디언
+  // =========================
+  document.querySelectorAll('.faq-question-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
 
-// #intro만 제외하고, 나머지 article에 observe 설정 (introSub 포함)
-document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
-  observer.observe(section);
-});
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const button = document.querySelector('.installation-drop-btn button');
-  const list = document.querySelector('.installation-list');
-
-  // 처음에는 펼쳐져 있도록 설정
-  button.setAttribute('aria-expanded', 'true');
-  list.classList.add('active');  // 'active' 클래스 추가하여 펼쳐놓기
-
-  // 클릭 시 토글 처리
-  button.addEventListener('click', function () {
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-
-    // 토글 상태 변경
-    this.setAttribute('aria-expanded', !isExpanded);
-    list.classList.toggle('active', !isExpanded);
+      const faqItem = button.closest('.faq-list-item');
+      if (faqItem) {
+        faqItem.classList.toggle('active', !expanded);
+      }
+    });
   });
+  
+  //모달 이벤트
+  const btnLawDetail = document.getElementById("btnLawDetail"); //
+  const btnCheckModal = document.getElementById("btnCheckModal"); // 필수 체크박스
+  const modalDim = document.querySelector(".modal-dim"); // 클래스 기반으로 선택
+  const lawModal = document.getElementById("lawModal"); 
+  const checkModal = document.getElementById("checkModal");
+  const closeBtns = document.querySelectorAll(".close-btn");
+
+
+  // 모달 열기
+  btnLawDetail.addEventListener("click", () => {
+    modalDim.classList.add("active");
+    lawModal.classList.add("active");
+  });
+
+  //
+  // TODO 해당 관련 이벤트는 한번 검수해주세요. 동의를 하고나면 더 노출안 하는 것인지 이런 처리만 부탁드립니다.
+  // 필수 체크박스
+  btnCheckModal.addEventListener("change", () => {
+    if (btnCheckModal.checked) {
+      modalDim.classList.add("active");
+      checkModal.classList.add("active");
+    }
+    // 체크 해제 시 아무 일도 하지 않음
+  });
+
+  // 모달 닫기 (모든 close-btn에 적용)
+  closeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modalDim.classList.remove("active");
+      document.querySelectorAll(".modal-pop").forEach((modal) => {
+        modal.classList.remove("active");
+      });
+    });
+  });
+
+
 });
 
 
-document.querySelectorAll('.faq-question-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const expanded = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!expanded));
 
-    // 부모 li.section-card.faq에 .active 토글
-    const faqItem = button.closest('.faq-list-item');
-    if (faqItem) {
-      faqItem.classList.toggle('active', !expanded);
+window.addEventListener('load', () => {
+  document.querySelectorAll('article:not(#intro) section.upslide').forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
+    const currentScroll = window.scrollY + window.innerHeight;
+
+    if (currentScroll >= sectionTop + (section.offsetHeight * 0.1)) {
+      section.classList.add('active');
+    } else {
+      observer.observe(section);
     }
   });
 });
-
-
