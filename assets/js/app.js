@@ -63,6 +63,19 @@ function onSubmit(event) {
   });
 }
 
+function onClickXpDoc() {
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://xpdoc.xperp.co.kr/distributions/content/';
+  iframe.style.width = '1px';
+  iframe.style.height = '1px';
+  iframe.style.position = 'absolute';
+  iframe.style.top = '-10px';
+  iframe.style.left = '-10px';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+}
+
+
 window.addEventListener('DOMContentLoaded', async ()=> {
   if (history.scrollRestoration) {
     history.scrollRestoration = 'auto';
