@@ -277,7 +277,6 @@ window.addEventListener('DOMContentLoaded', async ()=> {
 });
 
 
-// 새로고침 감지 TODO 이것만 일단 확인부탁드립니다. 새로고침시 클래스 추가는 확인했어요.
 const nav = performance.getEntriesByType('navigation')[0];
 const isReload = nav && nav.type === 'reload';
 
