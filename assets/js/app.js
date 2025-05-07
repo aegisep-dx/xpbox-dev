@@ -62,12 +62,14 @@ function onSubmit(event) {
   companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
   checkDataElement.checked = false;
   axios.post(`${API_BASE}/createissue`, data).then(()=> {
-    toast.style.opacity = '0';
     setTimeout(() => {
-      submitButtonElement.disabled = false;
-      toast.style.display = 'none';
-      toast.style.opacity = '1';
-      working = false;
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        submitButtonElement.disabled = false;
+        toast.style.display = 'none';
+        toast.style.opacity = '1';
+        working = false;
+      }, 1000);
     }, 1000);
   });
 }
@@ -262,24 +264,24 @@ window.addEventListener('DOMContentLoaded', async ()=> {
   // 8. 흐르는 제휴 업체 로고 무한히 흐르도록 처리
   // =========================
 
-  const track = document.getElementById('scrollTrack');
-  const clones = track.cloneNode(true);
-  const clones2 = track.cloneNode(true);// 전체 트랙을 복제
-  track.parentElement.appendChild(clones); // 복제 트랙 추가
-  track.parentElement.appendChild(clones2); // 복제 트랙 추가
+  const track = document.querySelector('.scroll-track');
+  const clone = track.cloneNode(true);
+  track.parentElement.appendChild(clone); // 복제 트랙 추가
 
-  let pos = 0;
-  const speed = 0.5; // 느리게 움직일수록 작게 설정
+
+  let pos = window.innerWidth / 6;
+  const speed = 0.5;
 
   function animate() {
     pos -= speed;
+
+    // 한 트랙 너비만큼 이동하면 다시 0으로
     if (Math.abs(pos) >= track.offsetWidth) {
-      pos = 0; // 다시 처음으로
+      pos = 0;
     }
 
     track.style.transform = `translateX(${pos}px)`;
-    clones.style.transform = `translateX(${pos}px)`;
-    clones2.style.transform = `translateX(${pos}px)`;
+    clone.style.transform = `translateX(${pos + track.offsetWidth}px)`;
 
     requestAnimationFrame(animate);
   }
