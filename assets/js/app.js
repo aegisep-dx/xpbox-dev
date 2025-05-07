@@ -74,6 +74,10 @@ window.addEventListener('DOMContentLoaded', async ()=> {
     history.scrollRestoration = 'manual';
   }
 
+  const nav = performance.getEntriesByType('navigation')[0];
+  if (nav && nav.type === 'reload') {
+    document.body.classList.add('no-animation');
+  }
 
   // =========================
   // 1. 비주얼 아이콘 애니메이션 순차 실행
@@ -264,5 +268,15 @@ window.addEventListener('DOMContentLoaded', async ()=> {
 
   animate();
 });
+
+
+// 새로고침 감지 TODO 이것만 일단 확인부탁드립니다. 새로고침시 클래스 추가는 확인했어요.
+const nav = performance.getEntriesByType('navigation')[0];
+const isReload = nav && nav.type === 'reload';
+
+if (isReload) {
+  document.body.classList.add('no-animation');
+}
+
 
 

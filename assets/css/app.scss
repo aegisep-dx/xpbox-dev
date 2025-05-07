@@ -353,7 +353,16 @@ header {
 
 
 main {position: relative; z-index: 0;}
-
+body {
+  &.no-animation {
+    *:not(#introSub):not(#intro):not(#introSub *) :not(#intro *) {
+      transition: none !important;
+      animation: none !important;
+      animation-delay: 0s !important;
+      transition-delay: 0s !important;
+    }
+  }
+}
 /* article 숨김 + 모션용 기본값 */
 aside {
   position: fixed;
@@ -427,10 +436,10 @@ article {
       }
       .visual-icon {
         opacity: 0;
-        transition: opacity 0.5s ease;
-        animation: float 3s ease-in-out infinite; /* 3초 간격으로 무한 반복 */
+        transition: opacity 0.5s ease  !important;
+        animation: float 3s ease-in-out infinite  !important; /* 3초 간격으로 무한 반복 */
         animation-play-state: running; /* 애니메이션이 중지되지 않도록 설정 */
-        animation-delay: var(--delay, 0s);
+        animation-delay: var(--delay, 0s)  !important;
         position: absolute;
         &.main-icon {
           filter:drop-shadow(8px 16px 20px rgba(71,82,92,0.13))
@@ -880,7 +889,7 @@ section {
             z-index: 1;
             left: 60px;
             top: 49px;
-            animation: visual-01-rotate 3s ease-in-out infinite;
+            animation: visual-01-rotate 3s ease-in-out infinite !important;
             transform-origin: 0% 50%; 
             transform-box: fill-box;
           }
@@ -888,7 +897,7 @@ section {
         &[aria-index="2"] {
           left: 181px;
           top: 95px;
-          animation: visual-02 3s ease-in-out infinite;
+          animation: visual-02 3s ease-in-out infinite  !important;
         }
         &[aria-index="3"] {
           right: 19px;
@@ -900,7 +909,7 @@ section {
             left: 1px;
             top: 33px;
             // animation: visual-03-rotate 3s ease-in-out infinite;
-            animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
+            animation-delay: 1s  !important; /* 두 번째 요소는 살짝 늦게 나타남 */
             transform-origin: 0 50%;
             transform-box: fill-box; 
           }
@@ -922,7 +931,7 @@ section {
             z-index: 1;
             left: -10px;
             top: 35px;
-            animation: visual-02-rotate 3s ease-in-out infinite;
+            animation: visual-02-rotate 3s ease-in-out infinite  !important;
             transform-origin: 50% 0%;
             transform-box: fill-box; 
           }
@@ -936,10 +945,10 @@ section {
             opacity: 0;
             transform: scale(0.8);
             transform-origin: center;
-            animation: blink 2s ease-in-out infinite;
+            animation: blink 2s ease-in-out infinite  !important;
           }
           #wifi-01 {
-            animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
+            animation-delay: 1s  !important; /* 두 번째 요소는 살짝 늦게 나타남 */
           }
         }
       }
@@ -1127,7 +1136,7 @@ footer {
   width: 80px;
   height: 170px;
   filter: drop-shadow(4px 6px 13px rgba(0,0,0,0.06));
-  button {
+  a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1158,6 +1167,7 @@ footer {
       padding: 18px 10px 21px;
     }
   }
+  
   @media (min-width: 1921px) {
     right: 200px; /* 우측 200px로 위치 */
     transform: translateX(-200px) translateY(-50%); /* translateX로 배너를 살짝 왼쪽으로 이동 */
