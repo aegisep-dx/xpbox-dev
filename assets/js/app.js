@@ -18,6 +18,7 @@ function onSubmit(event) {
   const emailElement = document.querySelector('#email');
   const phoneElement = document.querySelector('#phone');
   const contentElement = document.querySelector('#content');
+  const checkDataElement = document.querySelector('#checkData');
   const submitButtonElement = document.querySelector('#submit');
 
   if (company.trim().length <= 1) {
@@ -59,6 +60,7 @@ function onSubmit(event) {
   const toast = document.querySelector('.toast-message');
   toast.style.display = 'flex';
   companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
+  checkDataElement.checked = false;
   axios.post(`${API_BASE}/createissue`, data).then(()=> {
     toast.style.opacity = '0';
     setTimeout(() => {
