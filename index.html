@@ -11,7 +11,7 @@
       position: fixed;
       bottom: 80px;
       border-radius: 12px;
-      box-shadow: 4px 5px 24px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.2);
       padding: 22px 22px 22px 20px;
       color: #4A4E60;
       font-weight: 500;
@@ -25,7 +25,9 @@
       z-index: 15;
       opacity: 1;
       transition: opacity 1s;
+      font-size: 18px;
     }
+    .toast-message i {display: inline-flex;}
   </style>
   <script>
     if (history.scrollRestoration) {
@@ -497,7 +499,7 @@
         <form onsubmit="onSubmit(event)" class="section-contents form">
           <div class="form-input">
             <label class="required" for="company">아파트 단지명 / 단지코드 또는 회사명</label>
-            <input type="text" name="company" id="company" placeholder="아파트 단지명 / 단지코드 또는 회사 이름을 입력해 주세요" />
+            <input type="text" name="company" id="company" placeholder="아파트 단지명 / 단지코드 또는 회사 이름을 입력해 주세요." />
           </div>
           <div class="form-input">
             <label class="required" for="email">이메일</label>
