@@ -1,7 +1,9 @@
+const API_BASE = 'https://lxxofjjdpxrprtapiwww.supabase.co/functions/v1';
+
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const TEL_REGEX = /^\d{2,3}-?\d{3,4}-?\d{4}$/
 
-axios.get('http://dx-backend-prod-nlb-public-ac-cead4718671f9c57.elb.ap-northeast-2.amazonaws.com:11010/createissue').then(console.log);
+axios.defaults.adapter = 'fetch';
 
 let working = false;
 function onSubmit(event) {
@@ -41,37 +43,29 @@ function onSubmit(event) {
     return;
   }
   const date = new Date();
-  data.date = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}}`
+  data.date = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+    +` ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}}`
 
   working = true;
 
-  console.log(
-    'company: ', company,
-    'email: ', email,
-    'phone: ', phone,
-    'content: ', content,
-    'checkData: ', checkData,
-    'date', data.date);
-
-
   // 주석 제거하면 바로 사용 가능
-  // axios.post('http://dx-backend-prod-nlb-public-ac-cead4718671f9c57.elb.ap-northeast-2.amazonaws.com:11010/createissue', data).then(console.log);
-  const toast = document.querySelector('.toast-message');
-  toast.style.display = 'flex';
-  setTimeout(() => {
-    toast.style.opacity = '0';
+  axios.post(`${API_BASE}/createissue`, data).then(()=> {
+    const toast = document.querySelector('.toast-message');
+    toast.style.display = 'flex';
     setTimeout(() => {
-      toast.style.display = 'none';
-      toast.style.opacity = '1';
-      working = false;
-    }, 500);
-  }, 1000);
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        toast.style.display = 'none';
+        toast.style.opacity = '1';
+        working = false;
+      }, 500);
+    }, 1000);
+  });
 }
 
 window.addEventListener('DOMContentLoaded', async ()=> {
-
   if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
+    history.scrollRestoration = 'auto';
   }
 
   const nav = performance.getEntriesByType('navigation')[0];
@@ -278,5 +272,18 @@ if (isReload) {
   document.body.classList.add('no-animation');
 }
 
+//
 
-
+const phoneInput = document.getElementById('phone');
+phoneInput.addEventListener('input', function() {
+  this.value = this.value.replace(/[^0-9+-]/g, '');
+});
+phoneInput.addEventListener('paste', function(e) {
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text');
+  const filtered = text.replace(/[^0-9+-]/g, '');
+  document.execCommand('insertText', false, filtered);
+});
+phoneInput.addEventListener('compositionstart', function(e) {
+  e.preventDefault();
+});
