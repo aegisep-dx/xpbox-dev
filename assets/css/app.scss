@@ -894,20 +894,39 @@ section {
         &[aria-index="3"] {
           right: 19px;
           top: 34px;
-          animation: visual-03 3s ease-in-out infinite;
+          // animation: visual-03 3s ease-in-out infinite;
           img[aria-index="6"] {
             position: absolute;
             z-index: 1;
-            right: 64px;
-            top: 61px;
-            // animation: visual-03-rotate 3s ease-in-out infinite;
-            transform-origin: 0% 50%;
+            left: 1px;
+            top: 33px;
+            animation: visual-03-rotate 3s ease-in-out infinite;
+            animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
+            transform-origin: 0 50%;
+            transform-box: fill-box; 
+          }
+          & > div {
+            position: absolute;
+            z-index: 1;
+            right: 86px;
+            top: 29px;
+            animation: visual-03-arm 3s ease-in-out infinite;
+            transform-origin: 50% 0;
             transform-box: fill-box; 
           }
         }
         &[aria-index="4"] {
           left: 137px;
           bottom: 10px;
+          img[aria-index="8"] {
+            position: absolute;
+            z-index: 1;
+            left: -10px;
+            top: 35px;
+            animation: visual-02-rotate 3s ease-in-out infinite;
+            transform-origin: 50% 0%;
+            transform-box: fill-box; 
+          }
         }
         &[aria-index="5"] {
           position: absolute;
@@ -1014,6 +1033,7 @@ textarea {
   font-weight: 600;
   display: flex; align-items: center;
   justify-content: center;
+  margin-top: 28px;
   &:hover {
     background: #41424A;
   }
@@ -1273,12 +1293,21 @@ footer {
         transform: translateY(0px) rotate(30deg);
     }
 }
+
+@keyframes visual-02-rotate {
+    0%, 100% {
+        transform: translateX(0px) rotate(0);
+    }
+    50% {
+        transform: translateX(1px) rotate(-10deg);
+    }
+}
 @keyframes visual-02 {
   0%, 100% {
-    transform: translateY(0) scale(1); /* 시작 위치 */
+    transform: translateY(0) rotate(0); /* 시작 위치 */
   }
   50% {
-    transform: translateY(-6px) scale(1.025); /* 위로 떠오름 */
+    transform: translateY(-10px) rotate(5deg); /* 위로 떠오름 */
   }
 }
 
@@ -1292,19 +1321,36 @@ footer {
 }
 
 @keyframes visual-03-rotate {
-  0%, 40%, 50%, 90%, 100% {
-    transform: rotate(0); /* 시작 위치 */
+  0%, 10%, 50%, 90%, 100% {
+    transform: translate(0, 0) rotate(0); /* 시작 위치 */
   }
   25%, 75% {
-    transform: translate(-2px, -7px) rotate(45deg); /* 위로 떠오름 */
+    transform: translate(0, -5px) rotate(45deg); /* 위로 떠오름 */
   }
 }
 
+@keyframes visual-03-rotate {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0); /* 시작 위치 */
+  }
+  40%, 60% {
+    transform: translate(0, -5px) rotate(45deg); /* 위로 떠오름 */
+  }
+}
+
+@keyframes visual-03-arm {
+  0%, 50%, 100% {
+    transform: translate(0) rotate(0); /* 시작 위치 */
+  }
+  25%, 75% {
+    transform: translate(0, -1px) rotate(5deg); /* 위로 떠오름 */
+  }
+}
 @keyframes blink {
   0%, 100%{
     opacity: 0;
   }
-  50%, 100% {
+  50% {
     opacity: 1;
   }
 }

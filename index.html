@@ -60,12 +60,10 @@
           제30조(개인정보의 안전성 확보 조치)<br>
           ① 개인정보처리자는 법 제29조에 따라 다음 각 호의 안전성 확보 조치를 해야 한다.<br>
           5. 개인정보 침해 사고 발생에 대응하기 위한 접속기록의 보관 및 위조 · 변조 방지를 위한 다음 각 목의 조치<br>
-          <span class="gray-color">
-            가. 개인정보처리시스템에 접속한 자의 접속 일시, 처리 내역 등 접속기록의<br>
-            저장 · 점검 및 이의 확인 · 감독<br>
-            나. 개인정보처리시스템에 대한 접속기록의 안전한 보관<br>
-            다. 그 밖에 접속기록 보관 및 위조ㆍ변조 방지를 위하여 필요한 조치<br>
-          </span>
+          가. 개인정보처리시스템에 접속한 자의 접속 일시, 처리 내역 등 접속기록의<br>
+          저장 · 점검 및 이의 확인 · 감독<br>
+          나. 개인정보처리시스템에 대한 접속기록의 안전한 보관<br>
+          다. 그 밖에 접속기록 보관 및 위조ㆍ변조 방지를 위하여 필요한 조치<br>
           6. 개인정보처리시스템 및 개인정보 취급자가 개인정보 처리에 이용하는 정보기기에 대해 컴퓨터바이러스, 스파이웨어, 랜섬웨어 등 악성 프로그램의 침투 여부를 항시 점검ㆍ치료할 수 있도록 하는 등의
           기능이 포함된 프로그램의 설치ㆍ운영과 주기적 갱신ㆍ점검 조치
         </p>
@@ -155,11 +153,15 @@
               <img src="./assets/img/visual-img-02.svg" alt="중앙 폴더 이미지">
             </div>
             <div  aria-index="4" aria-label="사람 아이콘">
-              <img src="./assets/img/visual-img-02-1.svg" alt="사람 이미지">
+              <img src="./assets/img/visual-img-02-2-1.svg" alt="사람 이미지">
+              <img src="./assets/img/visual-img-02-1-1.svg" alt="사람 이미지" aria-index="8">
             </div>
             <div  aria-index="3" >
-              <img src="./assets/img/visual-img-033.svg" alt="문서 및 사람 노트북 이미지">
-              <img src="./assets/img/visual-img-03-1.svg" alt="손위치" aria-index="6">
+              <img src="./assets/img/visual-img-03.svg" alt="문서 및 사람 노트북 이미지">
+              <div class="" aria-index="9">
+                <img src="./assets/img/visual-img-03-33.svg" alt="팔">
+                <img src="./assets/img/visual-img-03-1.svg" alt="손위치" aria-index="6">
+              </div>
             </div>
             <div class="" aria-index="5" aria-label="와이파이 아이콘">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -500,24 +502,24 @@
           <h2>
             문의 / 제휴 접수
           </h2>
-          <span>해당 폼을 작성해 문의 주시면 빠르게 답변 드리겠습니다.</span>
+          <span>양식을 작성해주시면 빠르게 답변 드리겠습니다.</span>
         </div>
         <form onsubmit="onSubmit(event)" class="section-contents form">
           <div class="form-input">
             <label class="required" for="company">아파트 단지명 / 단지코드 또는 회사명</label>
-            <input type="text" name="company" id="company" placeholder="아파트 단지명 / 단지코드 또는 회사명" />
+            <input type="text" name="company" id="company" placeholder="아파트 단지명/단지코드 또는 회사 이름을 입력해주세요" />
           </div>
           <div class="form-input">
             <label class="required" for="email">이메일</label>
-            <input type="email" name="email" id="email" placeholder="이메일" />
+            <input type="email" name="email" id="email" placeholder="이메일 주소를 입력해주세요." />
           </div>
           <div class="form-input">
             <label class="required" for="phone">전화번호</label>
-            <input type="tel" name="phone" id="phone" placeholder="전화번호" />
+            <input type="tel" name="phone" id="phone" placeholder="연락받으실 전화번호를 입력해주세요. " />
           </div>
           <div class="form-input">
             <label class="required" for="content">문의 내용</label>
-            <textarea name="content" id="content" placeholder="문의 내용"></textarea>
+            <textarea name="content" id="content" placeholder="문의 내용을 입력해 주세요."></textarea>
             <span class="text-count"><span></span>/500</span>
           </div>
           <div class="check-btn">
