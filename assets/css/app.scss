@@ -126,6 +126,19 @@ textarea {
   font-family: "Pretendard", "Malgun Gothic", "맑은 고딕", "돋움", Dotum, Sans-serif;
 }
 
+//자동완성 배경 수정
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  }
+}
+
 html {
   position: relative;
   width: 100%;
