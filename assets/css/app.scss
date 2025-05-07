@@ -302,7 +302,7 @@ header {
   align-items: center;
   background: #fff;
   padding: 0 40px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 2;
   transition: fadeIn 0.2s;
@@ -365,7 +365,7 @@ header {
 }
 
 
-main {position: relative; z-index: 0;}
+main {position: relative; z-index: 0; padding-top: 72px;}
 body {
   &.no-animation {
     *:not(#introSub):not(#intro):not(#introSub *) :not(#intro *) {
