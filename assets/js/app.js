@@ -231,7 +231,9 @@ window.addEventListener('DOMContentLoaded', async ()=> {
     lawModal.classList.add("active");
   });
 
-  btnCheckModal.addEventListener("click", () => {
+  btnCheckModal.addEventListener("click", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     modalDim.classList.add("active");
     checkModal.classList.add("active");
   });
