@@ -9,32 +9,39 @@ let working = false;
 function onSubmit(event) {
   event.preventDefault();
   if (working) return;
+
   const formData = new FormData(event.target);
   const data = Object.fromEntries(formData.entries());
   const { company, email, phone, content, checkData } = data;
 
+  const companyElement = document.querySelector('#company');
+  const emailElement = document.querySelector('#email');
+  const phoneElement = document.querySelector('#phone');
+  const contentElement = document.querySelector('#content');
+  const submitButtonElement = document.querySelector('#submit');
+
   if (company.trim().length <= 1) {
     alert('회사/단지명을 확인해주세요.');
-    document.querySelector('#company').classList.add('error');
-    document.querySelector('#company').focus();
+    companyElement.classList.add('error');
+    companyElement.focus();
     return;
   }
   if (!EMAIL_REGEX.test(email)) {
     alert('이메일을 확인해주세요.');
-    document.querySelector('#email').classList.add('error');
-    document.querySelector('#email').focus();
+    emailElement.classList.add('error');
+    emailElement.focus();
     return;
   }
   if (!TEL_REGEX.test(phone)) {
     alert('전화번호를 확인해주세요.');
-    document.querySelector('#phone').classList.add('error');
+    phoneElement.classList.add('error');
     document.querySelector('#phone').focus();
     return;
   }
   if (content.trim().length < 10) {
     alert('문의사항을 10자이상 입력해주세요');
-    document.querySelector('#content').classList.add('error');
-    document.querySelector('#content').focus();
+    contentElement.classList.add('error');
+    contentElement.focus();
     return;
   }
 
@@ -47,18 +54,18 @@ function onSubmit(event) {
     +` ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 
   working = true;
+  submitButtonElement.disabled = true;
 
-  // 주석 제거하면 바로 사용 가능
+  const toast = document.querySelector('.toast-message');
+  toast.style.display = 'flex';
   axios.post(`${API_BASE}/createissue`, data).then(()=> {
-    const toast = document.querySelector('.toast-message');
-    toast.style.display = 'flex';
+    companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
+    toast.style.opacity = '0';
     setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => {
-        toast.style.display = 'none';
-        toast.style.opacity = '1';
-        working = false;
-      }, 500);
+      submitButtonElement.disabled = false;
+      toast.style.display = 'none';
+      toast.style.opacity = '1';
+      working = false;
     }, 1000);
   });
 }
