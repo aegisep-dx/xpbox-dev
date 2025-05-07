@@ -899,7 +899,7 @@ section {
             z-index: 1;
             left: 1px;
             top: 33px;
-            animation: visual-03-rotate 3s ease-in-out infinite;
+            // animation: visual-03-rotate 3s ease-in-out infinite;
             animation-delay: 1s; /* 두 번째 요소는 살짝 늦게 나타남 */
             transform-origin: 0 50%;
             transform-box: fill-box; 
@@ -909,13 +909,13 @@ section {
             z-index: 1;
             right: 86px;
             top: 29px;
-            animation: visual-03-arm 3s ease-in-out infinite;
+            // animation: visual-03-arm 3s ease-in-out infinite;
             transform-origin: 50% 0;
             transform-box: fill-box; 
           }
         }
         &[aria-index="4"] {
-          left: 137px;
+          left: 157px;
           bottom: 10px;
           img[aria-index="8"] {
             position: absolute;
