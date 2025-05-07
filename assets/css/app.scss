@@ -1037,12 +1037,15 @@ textarea {
       span {
         background: url("../img/check-checked.svg") no-repeat center;
       }
+      
     }
   }
   a {
     display: inline-flex;
     cursor: pointer;
+    text-decoration: underline;
   }
+  
 }
 
 .contact-submit {

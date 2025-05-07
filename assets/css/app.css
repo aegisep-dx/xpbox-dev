@@ -349,7 +349,7 @@ main {
   padding-top: 72px;
 }
 
-body.no-animation *:not(#introSub):not(#intro):not(#introSub *) :not(#intro *) {
+body.no-animation *:not(#intro):not(#introSub .visual-icon):not(#intro *) {
   transition: none !important;
   animation: none !important;
   animation-delay: 0s !important;
@@ -639,6 +639,10 @@ section.upslide.active .section-contents .section-card:nth-child(6) {
 }
 .section-card.use-cases h3 {
   margin-top: 12px;
+  padding-left: 2px;
+}
+.section-card.use-cases p {
+  padding-left: 2px;
 }
 .section-card.installation {
   background: #fff;
@@ -1063,6 +1067,9 @@ textarea.error {
 .check-btn a {
   display: inline-flex;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .contact-submit {
@@ -1161,6 +1168,11 @@ footer .foot-box .foot-button a {
   gap: 4px;
   font-size: 13px;
 }
+footer .foot-box .foot-button a:hover {
+  background: #41424A;
+}
+
+
 
 .floating-area {
   position: fixed;
@@ -1187,6 +1199,15 @@ footer .foot-box .foot-button a {
   color: #6B6D78;
   cursor: pointer;
   height: 85px;
+  &:hover {
+    color: #272932;
+    i.info {
+      background-image:  url("../img/info-icon-hover.svg");
+    }
+    i.data-info {
+      background-image:  url("../img/info-data-icon-hover.svg");
+    }
+  }
 }
 .floating-area a i {
   width: 24px;
@@ -1225,7 +1246,7 @@ footer .foot-box .foot-button a {
   right: 40px;
 }
 .scroll-top-btn:hover {
-  background-color: #fcfcfc;
+  background-color: #f5f5f5;
 }
 @media (min-width: 1921px) {
   .scroll-top-btn {
