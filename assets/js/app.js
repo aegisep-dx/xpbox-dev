@@ -58,8 +58,8 @@ function onSubmit(event) {
 
   const toast = document.querySelector('.toast-message');
   toast.style.display = 'flex';
+  companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
   axios.post(`${API_BASE}/createissue`, data).then(()=> {
-    companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
     toast.style.opacity = '0';
     setTimeout(() => {
       submitButtonElement.disabled = false;
