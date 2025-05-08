@@ -348,11 +348,15 @@ main {
   padding-top: 72px;
 }
 
-body.no-animation *:not(#introSub):not(#intro):not(#introSub *) :not(#intro *) {
+body.no-animation *:not(#intro):not(#introSub .visual-icon):not(#intro *) {
   transition: none !important;
   animation: none !important;
   animation-delay: 0s !important;
   transition-delay: 0s !important;
+  .uplide {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 
 /* article 숨김 + 모션용 기본값 */
@@ -638,6 +642,10 @@ section.upslide.active .section-contents .section-card:nth-child(6) {
 }
 .section-card.use-cases h3 {
   margin-top: 12px;
+  padding-left: 2px;
+}
+.section-card.use-cases p {
+  padding-left: 2px;
 }
 .section-card.installation {
   background: #fff;
@@ -1062,7 +1070,9 @@ textarea.error {
 .check-btn a {
   display: inline-flex;
   cursor: pointer;
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .contact-submit {
@@ -1161,6 +1171,11 @@ footer .foot-box .foot-button a {
   gap: 4px;
   font-size: 13px;
 }
+footer .foot-box .foot-button a:hover {
+  background: #41424A;
+}
+
+
 
 .floating-area {
   position: fixed;
@@ -1176,8 +1191,8 @@ footer .foot-box .foot-button a {
   filter: drop-shadow(4px 6px 13px rgba(0, 0, 0, 0.06));
 }
 .floating-area a {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: 15px;
@@ -1186,25 +1201,26 @@ footer .foot-box .foot-button a {
   line-height: 100%;
   color: #6B6D78;
   cursor: pointer;
-  height: 85px;
+  height: 84px;
+  width: 80px;
+  &.quick-info {
+    border-bottom: 1px solid #e8eaee;
+    padding: 20px 10px 18px;
+  }
+  &.quick-data-info {
+    padding: 18px 10px 21px;
+  }
+  &:hover {
+    color: #272932;
+    [aria-label="info"], [aria-label="data-info"] {
+      fill : #3C3D42;
+    }
+  }
 }
 .floating-area a i {
   width: 24px;
   height: 24px;
   display: block;
-}
-.floating-area a i.info {
-  background: url("../img/info-icon.svg") no-repeat center;
-}
-.floating-area a i.data-info {
-  background: url("../img/info-data-icon.svg") no-repeat center;
-}
-.floating-area a:first-child {
-  border-bottom: 1px solid #e8eaee;
-  padding: 20px 10px 18px;
-}
-.floating-area a:last-child {
-  padding: 18px 10px 21px;
 }
 @media (min-width: 1921px) {
   .floating-area {
@@ -1225,7 +1241,7 @@ footer .foot-box .foot-button a {
   right: 40px;
 }
 .scroll-top-btn:hover {
-  background-color: #fcfcfc;
+  background-color: #f5f5f5;
 }
 @media (min-width: 1921px) {
   .scroll-top-btn {
