@@ -266,7 +266,9 @@ window.addEventListener('DOMContentLoaded', async ()=> {
 
   const track = document.querySelector('.scroll-track');
   const clone = track.cloneNode(true);
+  const clone2 = track.cloneNode(true);
   track.parentElement.appendChild(clone); // 복제 트랙 추가
+  track.parentElement.appendChild(clone2); // 복제 트랙 추가
 
 
   let pos = window.innerWidth / 6;
@@ -275,13 +277,15 @@ window.addEventListener('DOMContentLoaded', async ()=> {
   function animate() {
     pos -= speed;
 
+    const width = track.offsetWidth;
     // 한 트랙 너비만큼 이동하면 다시 0으로
-    if (Math.abs(pos) >= track.offsetWidth) {
+    if (Math.abs(pos) >= width) {
       pos = 0;
     }
 
     track.style.transform = `translateX(${pos}px)`;
-    clone.style.transform = `translateX(${pos + track.offsetWidth}px)`;
+    clone.style.transform = `translateX(${pos + width}px)`;
+    clone2.style.transform = `translateX(${pos + width * 2}px)`;
 
     requestAnimationFrame(animate);
   }
