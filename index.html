@@ -10,30 +10,30 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="./assets/css/app.css?v2" as="style" />
   <script src="./assets/js/axios.min.js"></script>
-  <style>
-    .toast-message {
-      background: #fff;
-      position: fixed;
-      bottom: 130px;
-      border-radius: 12px;
-      box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.2);
-      padding: 22px 22px 22px 20px;
-      color: #4A4E60;
-      font-weight: 500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      line-height: 100%;
-      z-index: 15;
-      opacity: 1;
-      transition: opacity 1s;
-      font-size: 18px;
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVDTJ5QWZY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){
+      dataLayer.push(arguments);
     }
-    .toast-message i {display: inline-flex;}
-  </style>
+    gtag('js', new Date());
+    gtag('config', 'G-GVDTJ5QWZY');
+  </script>
+  <script>
+    function jp(obj) {
+      try { JSON.parse(obj); } catch (e) { return obj; }
+    }
+    function gaEvent(event, meta) {
+      return gtag('event', event, jp(meta));
+    }
+    function gaClick(action, label) {
+      return gtag('event', event, {
+        event_category: 'click',
+        label,
+      });
+    }
+  </script>
 </head>
 
 <body>
@@ -97,20 +97,20 @@
           <a onclick="window.scrollTo({top: 0})" href="javascript:void(0);">Xp문서함</a>
         </li>
         <li>
-          <a href="#use-cases">활용 예시</a>
+          <a href="#use-cases" onclick="gaClick('landing_header_usage', '헤더-활용_예시')">활용 예시</a>
         </li>
         <li>
-          <a href="#installation">설치 안내</a>
+          <a href="#installation" onclick="gaClick('landing_header_howtoinstall', '헤더-설치_안내')">설치 안내</a>
         </li>
         <li>
-          <a href="#faq">FAQ</a>
+          <a href="#faq" onclick="gaClick('landing_header_faq', '헤더-FAQ')">FAQ</a>
         </li>
         <li>
-          <a  href="#contact">문의 / 제휴 접수</a>
+          <a  href="#contact" onclick="gaClick('landing_header_inquiry', '헤더-문의_접수')">문의 / 제휴 접수</a>
         </li>
       </ul>
     </nav>
-    <button type="button" class="button" aira-label="문서함 사용하기 버튼" onclick="onClickXpDoc()">
+    <button type="button" class="button" aira-label="문서함 사용하기 버튼" onclick="onClickXpDoc();gaClick('landing_header_install', '헤더_문서함_사용하기_버튼')">
       Xp문서함 사용하기
     </button>
   </header>
@@ -122,7 +122,7 @@
   <main>
 
     <aside class="floating-area" aria-label="빠른 이동 메뉴">
-      <a class="quick-info" href="./assets/downloads/Xp문서함_사용안내.pdf" download="Xp문서함_사용안내.pdf">
+      <a class="quick-info" href="./assets/downloads/Xp문서함_사용안내.pdf" download="Xp문서함_사용안내.pdf" onclick="gaClick('landing_floating_guide', '플로팅_사용안내_버튼')">
           <i class="info" aria-label="사용안내 아이콘">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="11.9906" cy="12.0004" r="9.6" fill="#7B7D87" aria-label="info"/>
@@ -132,7 +132,7 @@
           </i>
           사용 안내
       </a>
-      <a class="quick-data-info" href="./assets/downloads/Xp문서함_소개자료.pdf" download="Xp문서함_소개자료.pdf">
+      <a class="quick-data-info" href="./assets/downloads/Xp문서함_소개자료.pdf" download="Xp문서함_소개자료.pdf" onclick="gaClick('landing_floating_introduction', '플로팅_소개자료_버튼')">
           <i class="data-info" aria-label="소개자료 아이콘">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -182,7 +182,7 @@
           문서 관리, 이제 어렵게 하지 마세요!<br>
           Xp문서함은 언제 어디서나 아파트 관리사무소 문서 편집이 가능합니다.
         </p>
-        <button type="button" aira-label="문서함 사용하기 버튼" class="button" onclick="onClickXpDoc()">
+        <button type="button" aira-label="문서함 사용하기 버튼" class="button" onclick="onClickXpDoc(); gaClick('landing_install', '문서함_사용하기_버튼');">
           <i class="icon down"></i>
           Xp문서함 사용하기
         </button>
@@ -531,7 +531,7 @@
               <a id="btnCheckModal"><strong>개인(신용)정보 수집·이용</strong></a>에 동의합니다. 상담 외 다른 목적으로 사용되지 않습니다.
             </label>
           </div>
-          <button type="submit" class="contact-submit" id="submit">신청하기</button>
+          <button type="submit" class="contact-submit" id="submit" onclick="gaClick('landing_inquiry', '문의접수_제휴하기_버튼')">신청하기</button>
         </form>
       </section>
       <section class="scroll-wrap" aria-label="affiliated-area">
@@ -561,8 +561,8 @@
         </p>
       </div>
       <div class="foot-button">
-        <a class="remote-btn" href="https://822.co.kr/" target="_blank">1:1 원격지원</a>
-        <a class="xphub-down-btn" href="https://xphub.xperp.co.kr/" target="_blank">
+        <a class="remote-btn" href="https://822.co.kr/" target="_blank" onclick="gaClick('landing_remotesupport', '푸터-1_1_원격지원_버튼')">1:1 원격지원</a>
+        <a class="xphub-down-btn" href="https://xphub.xperp.co.kr/" target="_blank" onclick="gaClick('landing_hubinstall', '푸터-XpHUB_다운로드_버튼')">
           <i><img src="./assets/img/xphub-icon.svg" alt="xphub아이콘"></i>
           XpHUB 다운로드
         </a>

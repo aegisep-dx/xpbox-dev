@@ -92,6 +92,12 @@ window.addEventListener('DOMContentLoaded', async ()=> {
     history.scrollRestoration = 'auto';
   }
 
+  gaEvent('page_view', {
+    page_title: document.title,
+    page_path: location.pathname,
+    page_url: location.origin,
+  });
+
   const nav = performance.getEntriesByType('navigation')[0];
   if (nav && nav.type === 'reload') {
     document.body.classList.add('no-animation');

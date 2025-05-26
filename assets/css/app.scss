@@ -1037,7 +1037,7 @@ textarea {
       span {
         background: url("../img/check-checked.svg") no-repeat center;
       }
-      
+
     }
   }
   a {
@@ -1045,7 +1045,7 @@ textarea {
     cursor: pointer;
     text-decoration: underline;
   }
-  
+
 }
 
 .contact-submit {
@@ -1420,5 +1420,30 @@ footer {
   }
   0% {
     transform: translateX(0);
+  }
+}
+
+.toast-message {
+  background: #fff;
+  position: fixed;
+  bottom: 130px;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.2);
+  padding: 22px 22px 22px 20px;
+  color: #4A4E60;
+  font-weight: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 100%;
+  z-index: 15;
+  opacity: 1;
+  transition: opacity 1s;
+  font-size: 18px;
+  i {
+    display: inline-flex;
   }
 }
