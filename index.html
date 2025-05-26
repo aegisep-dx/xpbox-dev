@@ -28,7 +28,7 @@
       return gtag('event', event, jp(meta));
     }
     function gaClick(action, label) {
-      return gtag('event', event, {
+      return gtag('event', action, {
         event_category: 'click',
         label,
       });
