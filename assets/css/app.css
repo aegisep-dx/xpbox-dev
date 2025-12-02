@@ -16,7 +16,9 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 html,
@@ -350,8 +352,10 @@ main {
 
 body.no-animation *:not(#introSub):not(#intro):not(#introSub *) :not(#intro *) {
   transition: none !important;
-  animation: none !important;
-  animation-delay: 0s !important;
+  -webkit-animation: none !important;
+          animation: none !important;
+  -webkit-animation-delay: 0s !important;
+          animation-delay: 0s !important;
   transition-delay: 0s !important;
 }
 
@@ -434,9 +438,12 @@ article#introSub section p {
 article#introSub section .visual-icon {
   opacity: 0;
   transition: opacity 0.5s ease !important;
-  animation: float 3s ease-in-out infinite !important; /* 3초 간격으로 무한 반복 */
-  animation-play-state: running; /* 애니메이션이 중지되지 않도록 설정 */
-  animation-delay: var(--delay, 0s) !important;
+  -webkit-animation: float 3s ease-in-out infinite !important;
+          animation: float 3s ease-in-out infinite !important; /* 3초 간격으로 무한 반복 */
+  -webkit-animation-play-state: running;
+          animation-play-state: running; /* 애니메이션이 중지되지 않도록 설정 */
+  -webkit-animation-delay: var(--delay, 0s) !important;
+          animation-delay: var(--delay, 0s) !important;
   position: absolute;
 }
 article#introSub section .visual-icon.main-icon {
@@ -500,6 +507,8 @@ section {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
 section.upslide {
@@ -928,14 +937,16 @@ button[aria-expanded=true] + .installation-list {
   z-index: 1;
   left: 60px;
   top: 49px;
-  animation: visual-01-rotate 3s ease-in-out infinite !important;
+  -webkit-animation: visual-01-rotate 3s ease-in-out infinite !important;
+          animation: visual-01-rotate 3s ease-in-out infinite !important;
   transform-origin: 0% 50%;
   transform-box: fill-box;
 }
 .main-visual section .visual-img-motion div[aria-index="2"] {
   left: 181px;
   top: 95px;
-  animation: visual-02 3s ease-in-out infinite !important;
+  -webkit-animation: visual-02 3s ease-in-out infinite !important;
+          animation: visual-02 3s ease-in-out infinite !important;
 }
 .main-visual section .visual-img-motion div[aria-index="3"] {
   right: 19px;
@@ -946,7 +957,8 @@ button[aria-expanded=true] + .installation-list {
   z-index: 1;
   left: 1px;
   top: 33px;
-  animation-delay: 1s !important; /* 두 번째 요소는 살짝 늦게 나타남 */
+  -webkit-animation-delay: 1s !important;
+          animation-delay: 1s !important; /* 두 번째 요소는 살짝 늦게 나타남 */
   transform-origin: 0 50%;
   transform-box: fill-box;
 }
@@ -967,7 +979,8 @@ button[aria-expanded=true] + .installation-list {
   z-index: 1;
   left: -10px;
   top: 35px;
-  animation: visual-02-rotate 3s ease-in-out infinite !important;
+  -webkit-animation: visual-02-rotate 3s ease-in-out infinite !important;
+          animation: visual-02-rotate 3s ease-in-out infinite !important;
   transform-origin: 50% 0%;
   transform-box: fill-box;
 }
@@ -981,10 +994,12 @@ button[aria-expanded=true] + .installation-list {
   opacity: 0;
   transform: scale(0.8);
   transform-origin: center;
-  animation: blink 2s ease-in-out infinite !important;
+  -webkit-animation: blink 2s ease-in-out infinite !important;
+          animation: blink 2s ease-in-out infinite !important;
 }
 .main-visual section .visual-img-motion div[aria-index="5"] #wifi-01 {
-  animation-delay: 1s !important; /* 두 번째 요소는 살짝 늦게 나타남 */
+  -webkit-animation-delay: 1s !important;
+          animation-delay: 1s !important; /* 두 번째 요소는 살짝 늦게 나타남 */
 }
 
 input {
@@ -995,6 +1010,11 @@ input {
   word-spacing: -0.01em;
   border: 1px solid #E8EAEE;
   padding: 16px;
+}
+input::-moz-placeholder {
+  font-size: 17px;
+  color: #a5a6ad;
+  word-spacing: -0.01em;
 }
 input::placeholder {
   font-size: 17px;
@@ -1019,6 +1039,11 @@ textarea {
   padding: 24px 36px 36px 24px;
   height: 266px;
   resize: none;
+}
+textarea::-moz-placeholder {
+  font-size: 17px;
+  color: #a5a6ad;
+  word-spacing: -0.01em;
 }
 textarea::placeholder {
   font-size: 17px;
@@ -1141,6 +1166,7 @@ footer .foot-box .foot-info p {
 footer .foot-box .foot-info p strong {
   font-size: inherit;
   color: #fff;
+  font-weight: 600;
 }
 footer .foot-box .foot-button {
   margin-top: auto;
@@ -1317,12 +1343,35 @@ footer .foot-box .foot-button a {
   font-size: 14px;
 }
 
+@-webkit-keyframes visual-01 {
+  0%, 100% {
+    transform: translate(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translate(-3px, -3px); /* 위로 떠오름 */
+  }
+}
+
 @keyframes visual-01 {
   0%, 100% {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
     transform: translate(-3px, -3px); /* 위로 떠오름 */
+  }
+}
+@-webkit-keyframes visual-01-rotate {
+  0% {
+    transform: translateY(0px) rotate(30deg);
+  }
+  40% {
+    transform: translateY(6px) rotate(-17deg);
+  }
+  70% {
+    transform: translateY(6px) rotate(-17deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(30deg);
   }
 }
 @keyframes visual-01-rotate {
@@ -1339,12 +1388,28 @@ footer .foot-box .foot-button a {
     transform: translateY(0px) rotate(30deg);
   }
 }
+@-webkit-keyframes visual-02-rotate {
+  0%, 100% {
+    transform: translateX(0px) rotate(0);
+  }
+  50% {
+    transform: translateX(1px) rotate(-10deg);
+  }
+}
 @keyframes visual-02-rotate {
   0%, 100% {
     transform: translateX(0px) rotate(0);
   }
   50% {
     transform: translateX(1px) rotate(-10deg);
+  }
+}
+@-webkit-keyframes visual-02 {
+  0%, 100% {
+    transform: translateY(0) scale(1); /* 시작 위치 */
+  }
+  50% {
+    transform: translateY(-7px) scale(1.01); /* 위로 떠오름 */
   }
 }
 @keyframes visual-02 {
@@ -1355,12 +1420,28 @@ footer .foot-box .foot-button a {
     transform: translateY(-7px) scale(1.01); /* 위로 떠오름 */
   }
 }
+@-webkit-keyframes visual-03 {
+  0%, 100% {
+    transform: translate(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translate(5px, -5px); /* 위로 떠오름 */
+  }
+}
 @keyframes visual-03 {
   0%, 100% {
     transform: translate(0); /* 시작 위치 */
   }
   50% {
     transform: translate(5px, -5px); /* 위로 떠오름 */
+  }
+}
+@-webkit-keyframes visual-03-rotate {
+  0%, 10%, 50%, 90%, 100% {
+    transform: translate(0, 0) rotate(0); /* 시작 위치 */
+  }
+  25%, 75% {
+    transform: translate(0, -5px) rotate(45deg); /* 위로 떠오름 */
   }
 }
 @keyframes visual-03-rotate {
@@ -1379,12 +1460,28 @@ footer .foot-box .foot-button a {
     transform: translate(0, -5px) rotate(45deg); /* 위로 떠오름 */
   }
 }
+@-webkit-keyframes visual-03-arm {
+  0%, 50%, 100% {
+    transform: translate(0) rotate(0); /* 시작 위치 */
+  }
+  25%, 75% {
+    transform: translate(0, -1px) rotate(5deg); /* 위로 떠오름 */
+  }
+}
 @keyframes visual-03-arm {
   0%, 50%, 100% {
     transform: translate(0) rotate(0); /* 시작 위치 */
   }
   25%, 75% {
     transform: translate(0, -1px) rotate(5deg); /* 위로 떠오름 */
+  }
+}
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
 }
 @keyframes blink {
@@ -1395,12 +1492,34 @@ footer .foot-box .foot-button a {
     opacity: 1;
   }
 }
+@-webkit-keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* 시작 위치 */
+  }
+  50% {
+    transform: translateY(-5px); /* 위로 떠오름 */
+  }
+}
 @keyframes float {
   0%, 100% {
     transform: translateY(0); /* 시작 위치 */
   }
   50% {
     transform: translateY(-5px); /* 위로 떠오름 */
+  }
+}
+@-webkit-keyframes scale {
+  0% {
+    transform: scale(0); /* 시작 위치 */
+  }
+  20% {
+    transform: scale(0); /* 위로 떠오름 */
+  }
+  50% {
+    transform: scale(0); /* 위로 떠오름 */
+  }
+  100% {
+    transform: scale(1); /* 다시 원래 위치로 */
   }
 }
 @keyframes scale {
@@ -1415,6 +1534,17 @@ footer .foot-box .foot-button a {
   }
   100% {
     transform: scale(1); /* 다시 원래 위치로 */
+  }
+}
+@-webkit-keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+  0% {
+    transform: translateX(0);
   }
 }
 @keyframes scrollLoop {
@@ -1452,5 +1582,4 @@ footer .foot-box .foot-button a {
 .toast-message i {
   display: inline-flex;
 }
-
 /*# sourceMappingURL=app.css.map */
