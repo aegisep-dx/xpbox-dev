@@ -1,4 +1,4 @@
-const API_BASE = 'https://lxxofjjdpxrprtapiwww.supabase.co/functions/v1';
+const API_BASE = 'https://dogfish-rich-centrally.ngrok-free.app';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const TEL_REGEX = /^\d{2,3}-?\d{3,4}-?\d{4}$/
@@ -61,7 +61,7 @@ function onSubmit(event) {
   toast.style.display = 'flex';
   companyElement.value = emailElement.value = phoneElement.value = contentElement.value = '';
   checkDataElement.checked = false;
-  axios.post(`${API_BASE}/createissue`, data).then(()=> {
+  axios.post(`${API_BASE}/create-issue`, data).then(()=> {
     setTimeout(() => {
       toast.style.opacity = '0';
       setTimeout(() => {
