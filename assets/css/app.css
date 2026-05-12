@@ -610,7 +610,7 @@ section.upslide.active .section-contents .section-card:nth-child(6) {
   flex-direction: column;
   flex-wrap: nowrap;
   width: 618px;
-  height: auto;
+  height: 5px;
   visibility: hidden;
   pointer-events: none;
 }
